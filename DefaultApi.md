@@ -1,6 +1,6 @@
 # .DefaultApi
 
-All URIs are relative to *http://localhost:3000*
+All URIs are relative to *https://roketo-test-api.herokuapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
