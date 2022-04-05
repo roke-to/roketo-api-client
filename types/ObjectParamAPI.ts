@@ -4,6 +4,7 @@ import { Configuration} from '../configuration'
 
 import { AccessToken } from '../models/AccessToken';
 import { BadRequest } from '../models/BadRequest';
+import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Unauthorized } from '../models/Unauthorized';
 
@@ -51,7 +52,7 @@ export class ObjectDefaultApi {
     /**
      * @param param the request object
      */
-    public getHello(param: DefaultApiGetHelloRequest = {}, options?: Configuration): Promise<void> {
+    public getHello(param: DefaultApiGetHelloRequest = {}, options?: Configuration): Promise<HelloResponse> {
         return this.api.getHello( options).toPromise();
     }
 

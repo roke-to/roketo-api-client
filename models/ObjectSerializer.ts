@@ -1,10 +1,12 @@
 export * from './AccessToken';
 export * from './BadRequest';
+export * from './HelloResponse';
 export * from './LoginDto';
 export * from './Unauthorized';
 
 import { AccessToken } from './AccessToken';
 import { BadRequest } from './BadRequest';
+import { HelloResponse } from './HelloResponse';
 import { LoginDto } from './LoginDto';
 import { Unauthorized } from './Unauthorized';
 
@@ -33,6 +35,7 @@ let enumsMap: Set<string> = new Set<string>([
 let typeMap: {[index: string]: any} = {
     "AccessToken": AccessToken,
     "BadRequest": BadRequest,
+    "HelloResponse": HelloResponse,
     "LoginDto": LoginDto,
     "Unauthorized": Unauthorized,
 }

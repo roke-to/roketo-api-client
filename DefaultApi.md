@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **getHello**
-> void getHello()
+> HelloResponse getHello()
 
 
 ### Example
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**void**
+**HelloResponse**
 
 ### Authorization
 

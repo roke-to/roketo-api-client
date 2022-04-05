@@ -4,6 +4,7 @@ import { Configuration} from '../configuration'
 
 import { AccessToken } from '../models/AccessToken';
 import { BadRequest } from '../models/BadRequest';
+import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { ObservableAuthApi } from './ObservableAPI';
@@ -49,7 +50,7 @@ export class PromiseDefaultApi {
 
     /**
      */
-    public getHello(_options?: Configuration): Promise<void> {
+    public getHello(_options?: Configuration): Promise<HelloResponse> {
         const result = this.api.getHello(_options);
         return result.toPromise();
     }

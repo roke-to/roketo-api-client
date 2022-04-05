@@ -5,6 +5,7 @@ import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { AccessToken } from '../models/AccessToken';
 import { BadRequest } from '../models/BadRequest';
+import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Unauthorized } from '../models/Unauthorized';
 
@@ -66,7 +67,7 @@ export class ObservableDefaultApi {
 
     /**
      */
-    public getHello(_options?: Configuration): Observable<void> {
+    public getHello(_options?: Configuration): Observable<HelloResponse> {
         const requestContextPromise = this.requestFactory.getHello(_options);
 
         // build promise chain
