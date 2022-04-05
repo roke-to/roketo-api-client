@@ -78,4 +78,5 @@ export class DefaultApiResponseProcessor {
 
         throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
     }
+
 }

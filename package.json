@@ -1,6 +1,6 @@
 {
   "name": "@roketo/client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "OpenAPI client for @roketo/client",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
