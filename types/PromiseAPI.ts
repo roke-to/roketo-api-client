@@ -2,11 +2,13 @@ import { ResponseContext, RequestContext, HttpFile } from '../http/http';
 import * as models from '../models/all';
 import { Configuration} from '../configuration'
 
-import { AccessToken } from '../models/AccessToken';
+import { AccessTokenDto } from '../models/AccessTokenDto';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Unauthorized } from '../models/Unauthorized';
+import { UpsertUserDto } from '../models/UpsertUserDto';
+import { User } from '../models/User';
 import { ObservableAuthApi } from './ObservableAPI';
 
 import { AuthApiRequestFactory, AuthApiResponseProcessor} from "../apis/AuthApi";
@@ -24,7 +26,7 @@ export class PromiseAuthApi {
     /**
      * @param loginDto 
      */
-    public login(loginDto: LoginDto, _options?: Configuration): Promise<AccessToken> {
+    public login(loginDto: LoginDto, _options?: Configuration): Promise<AccessTokenDto> {
         const result = this.api.login(loginDto, _options);
         return result.toPromise();
     }
@@ -52,6 +54,42 @@ export class PromiseDefaultApi {
      */
     public getHello(_options?: Configuration): Promise<HelloResponse> {
         const result = this.api.getHello(_options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableUsersApi } from './ObservableAPI';
+
+import { UsersApiRequestFactory, UsersApiResponseProcessor} from "../apis/UsersApi";
+export class PromiseUsersApi {
+    private api: ObservableUsersApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: UsersApiRequestFactory,
+        responseProcessor?: UsersApiResponseProcessor
+    ) {
+        this.api = new ObservableUsersApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param accountId 
+     */
+    public findOne(accountId: string, _options?: Configuration): Promise<User> {
+        const result = this.api.findOne(accountId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param accountId 
+     * @param upsertUserDto 
+     */
+    public upsert(accountId: string, upsertUserDto: UpsertUserDto, _options?: Configuration): Promise<User> {
+        const result = this.api.upsert(accountId, upsertUserDto, _options);
         return result.toPromise();
     }
 

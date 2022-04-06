@@ -11,16 +11,20 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ObjectSerializer = void 0;
-__exportStar(require("./AccessToken"), exports);
+__exportStar(require("./AccessTokenDto"), exports);
 __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
-var AccessToken_1 = require("./AccessToken");
+__exportStar(require("./UpsertUserDto"), exports);
+__exportStar(require("./User"), exports);
+var AccessTokenDto_1 = require("./AccessTokenDto");
 var BadRequest_1 = require("./BadRequest");
 var HelloResponse_1 = require("./HelloResponse");
 var LoginDto_1 = require("./LoginDto");
 var Unauthorized_1 = require("./Unauthorized");
+var UpsertUserDto_1 = require("./UpsertUserDto");
+var User_1 = require("./User");
 var primitives = [
     "string",
     "boolean",
@@ -38,11 +42,13 @@ var supportedMediaTypes = {
 };
 var enumsMap = new Set([]);
 var typeMap = {
-    "AccessToken": AccessToken_1.AccessToken,
+    "AccessTokenDto": AccessTokenDto_1.AccessTokenDto,
     "BadRequest": BadRequest_1.BadRequest,
     "HelloResponse": HelloResponse_1.HelloResponse,
     "LoginDto": LoginDto_1.LoginDto,
     "Unauthorized": Unauthorized_1.Unauthorized,
+    "UpsertUserDto": UpsertUserDto_1.UpsertUserDto,
+    "User": User_1.User,
 };
 var ObjectSerializer = (function () {
     function ObjectSerializer() {

@@ -109,7 +109,7 @@ var AuthApiResponseProcessor = (function () {
                         _d = (_c = ObjectSerializer_1.ObjectSerializer).parse;
                         return [4, response.body.text()];
                     case 1:
-                        body = _b.apply(_a, [_d.apply(_c, [_q.sent(), contentType]), "AccessToken", ""]);
+                        body = _b.apply(_a, [_d.apply(_c, [_q.sent(), contentType]), "AccessTokenDto", ""]);
                         return [2, body];
                     case 2:
                         if (!util_1.isCodeInRange("400", response.httpStatusCode)) return [3, 4];
@@ -125,7 +125,7 @@ var AuthApiResponseProcessor = (function () {
                         _m = (_l = ObjectSerializer_1.ObjectSerializer).parse;
                         return [4, response.body.text()];
                     case 5:
-                        body = _k.apply(_j, [_m.apply(_l, [_q.sent(), contentType]), "AccessToken", ""]);
+                        body = _k.apply(_j, [_m.apply(_l, [_q.sent(), contentType]), "AccessTokenDto", ""]);
                         return [2, body];
                     case 6:
                         _o = exception_1.ApiException.bind;

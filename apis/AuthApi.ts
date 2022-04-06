@@ -8,7 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { AccessToken } from '../models/AccessToken';
+import { AccessTokenDto } from '../models/AccessTokenDto';
 import { BadRequest } from '../models/BadRequest';
 import { LoginDto } from '../models/LoginDto';
 
@@ -68,13 +68,13 @@ export class AuthApiResponseProcessor {
      * @params response Response returned by the server for a request to login
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async login(response: ResponseContext): Promise<AccessToken > {
+     public async login(response: ResponseContext): Promise<AccessTokenDto > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: AccessToken = ObjectSerializer.deserialize(
+            const body: AccessTokenDto = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "AccessToken", ""
-            ) as AccessToken;
+                "AccessTokenDto", ""
+            ) as AccessTokenDto;
             return body;
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -87,10 +87,10 @@ export class AuthApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: AccessToken = ObjectSerializer.deserialize(
+            const body: AccessTokenDto = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "AccessToken", ""
-            ) as AccessToken;
+                "AccessTokenDto", ""
+            ) as AccessTokenDto;
             return body;
         }
 

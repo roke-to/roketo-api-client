@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 ```typescript
-import {  } from '@roketo/client';
+import {  } from '@roketo/api-client';
 import * as fs from 'fs';
 
 const configuration = .createConfiguration();
