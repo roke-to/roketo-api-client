@@ -16,9 +16,9 @@ var LoginDto = (function () {
             "format": ""
         },
         {
-            "name": "message",
-            "baseName": "message",
-            "type": "string",
+            "name": "timestamp",
+            "baseName": "timestamp",
+            "type": "number",
             "format": ""
         },
         {

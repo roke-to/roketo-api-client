@@ -2,10 +2,8 @@
 AuthApi.md
 DefaultApi.md
 README.md
-UsersApi.md
 apis/AuthApi.ts
 apis/DefaultApi.ts
-apis/UsersApi.ts
 apis/baseapi.ts
 apis/exception.ts
 auth/auth.ts
@@ -21,8 +19,6 @@ models/HelloResponse.ts
 models/LoginDto.ts
 models/ObjectSerializer.ts
 models/Unauthorized.ts
-models/UpsertUserDto.ts
-models/User.ts
 models/all.ts
 package.json
 rxjsStub.ts

@@ -1,6 +1,6 @@
 export declare class LoginDto {
     'accountId': string;
-    'message': string;
+    'timestamp': number;
     'signature': Array<number>;
     static readonly discriminator: string | undefined;
     static readonly attributeTypeMap: Array<{

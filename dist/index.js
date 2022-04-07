@@ -20,5 +20,4 @@ __exportStar(require("./servers"), exports);
 var PromiseAPI_1 = require("./types/PromiseAPI");
 Object.defineProperty(exports, "AuthApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseAuthApi; } });
 Object.defineProperty(exports, "DefaultApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseDefaultApi; } });
-Object.defineProperty(exports, "UsersApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseUsersApi; } });
 //# sourceMappingURL=index.js.map

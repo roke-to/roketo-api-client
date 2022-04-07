@@ -18,11 +18,11 @@ export class LoginDto {
     */
     'accountId': string;
     /**
-    * Login message starting with \"ROKETO-LOGIN\" and ending with current timestamp
+    * Current timestamp.
     */
-    'message': string;
+    'timestamp': number;
     /**
-    * Signature of login message signed with user's private key in form of an array of 64 integer numbers
+    * Signature of timestamp string signed with user's private key in form of an array of 64 integer numbers.
     */
     'signature': Array<number>;
 
@@ -36,9 +36,9 @@ export class LoginDto {
             "format": ""
         },
         {
-            "name": "message",
-            "baseName": "message",
-            "type": "string",
+            "name": "timestamp",
+            "baseName": "timestamp",
+            "type": "number",
             "format": ""
         },
         {

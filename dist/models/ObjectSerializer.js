@@ -16,15 +16,11 @@ __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
-__exportStar(require("./UpsertUserDto"), exports);
-__exportStar(require("./User"), exports);
 var AccessTokenDto_1 = require("./AccessTokenDto");
 var BadRequest_1 = require("./BadRequest");
 var HelloResponse_1 = require("./HelloResponse");
 var LoginDto_1 = require("./LoginDto");
 var Unauthorized_1 = require("./Unauthorized");
-var UpsertUserDto_1 = require("./UpsertUserDto");
-var User_1 = require("./User");
 var primitives = [
     "string",
     "boolean",
@@ -47,8 +43,6 @@ var typeMap = {
     "HelloResponse": HelloResponse_1.HelloResponse,
     "LoginDto": LoginDto_1.LoginDto,
     "Unauthorized": Unauthorized_1.Unauthorized,
-    "UpsertUserDto": UpsertUserDto_1.UpsertUserDto,
-    "User": User_1.User,
 };
 var ObjectSerializer = (function () {
     function ObjectSerializer() {
