@@ -3,12 +3,16 @@ export * from './BadRequest';
 export * from './HelloResponse';
 export * from './LoginDto';
 export * from './Unauthorized';
+export * from './UpsertUserDto';
+export * from './User';
 
 import { AccessTokenDto } from './AccessTokenDto';
 import { BadRequest } from './BadRequest';
 import { HelloResponse } from './HelloResponse';
 import { LoginDto } from './LoginDto';
 import { Unauthorized } from './Unauthorized';
+import { UpsertUserDto } from './UpsertUserDto';
+import { User } from './User';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -38,6 +42,8 @@ let typeMap: {[index: string]: any} = {
     "HelloResponse": HelloResponse,
     "LoginDto": LoginDto,
     "Unauthorized": Unauthorized,
+    "UpsertUserDto": UpsertUserDto,
+    "User": User,
 }
 
 export class ObjectSerializer {

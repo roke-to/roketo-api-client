@@ -1,6 +1,6 @@
 export declare class UpsertUserDto {
-    'name'?: string;
-    'email'?: string;
+    'name': string;
+    'email': string;
     static readonly discriminator: string | undefined;
     static readonly attributeTypeMap: Array<{
         name: string;

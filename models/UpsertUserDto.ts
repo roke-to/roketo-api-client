@@ -16,11 +16,11 @@ export class UpsertUserDto {
     /**
     * The name of a user.
     */
-    'name'?: string;
+    'name': string;
     /**
     * The email of a user.
     */
-    'email'?: string;
+    'email': string;
 
     static readonly discriminator: string | undefined = undefined;
 

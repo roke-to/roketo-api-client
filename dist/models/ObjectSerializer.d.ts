@@ -3,6 +3,8 @@ export * from './BadRequest';
 export * from './HelloResponse';
 export * from './LoginDto';
 export * from './Unauthorized';
+export * from './UpsertUserDto';
+export * from './User';
 export declare class ObjectSerializer {
     static findCorrectType(data: any, expectedType: string): any;
     static serialize(data: any, type: string, format: string): any;

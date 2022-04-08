@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ObjectDefaultApi = exports.ObjectAuthApi = void 0;
+exports.ObjectUsersApi = exports.ObjectDefaultApi = exports.ObjectAuthApi = void 0;
 var ObservableAPI_1 = require("./ObservableAPI");
 var ObjectAuthApi = (function () {
     function ObjectAuthApi(configuration, requestFactory, responseProcessor) {
@@ -24,4 +24,21 @@ var ObjectDefaultApi = (function () {
     return ObjectDefaultApi;
 }());
 exports.ObjectDefaultApi = ObjectDefaultApi;
+var ObservableAPI_3 = require("./ObservableAPI");
+var ObjectUsersApi = (function () {
+    function ObjectUsersApi(configuration, requestFactory, responseProcessor) {
+        this.api = new ObservableAPI_3.ObservableUsersApi(configuration, requestFactory, responseProcessor);
+    }
+    ObjectUsersApi.prototype.findOne = function (param, options) {
+        return this.api.findOne(param.accountId, options).toPromise();
+    };
+    ObjectUsersApi.prototype.getAvatarUrl = function (param, options) {
+        return this.api.getAvatarUrl(param.accountId, options).toPromise();
+    };
+    ObjectUsersApi.prototype.upsert = function (param, options) {
+        return this.api.upsert(param.accountId, param.upsertUserDto, options).toPromise();
+    };
+    return ObjectUsersApi;
+}());
+exports.ObjectUsersApi = ObjectUsersApi;
 //# sourceMappingURL=ObjectParamAPI.js.map
