@@ -1,10 +1,12 @@
 .gitignore
 AuthApi.md
 DefaultApi.md
+NotificationsApi.md
 README.md
 UsersApi.md
 apis/AuthApi.ts
 apis/DefaultApi.ts
+apis/NotificationsApi.ts
 apis/UsersApi.ts
 apis/baseapi.ts
 apis/exception.ts
@@ -19,7 +21,9 @@ models/AccessTokenDto.ts
 models/BadRequest.ts
 models/HelloResponse.ts
 models/LoginDto.ts
+models/Notification.ts
 models/ObjectSerializer.ts
+models/ReadNotificationDto.ts
 models/Unauthorized.ts
 models/UpsertUserDto.ts
 models/User.ts

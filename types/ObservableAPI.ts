@@ -7,6 +7,8 @@ import { AccessTokenDto } from '../models/AccessTokenDto';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
+import { Notification } from '../models/Notification';
+import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpsertUserDto } from '../models/UpsertUserDto';
 import { User } from '../models/User';
@@ -85,6 +87,68 @@ export class ObservableDefaultApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getHello(rsp)));
+            }));
+    }
+
+}
+
+import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor} from "../apis/NotificationsApi";
+export class ObservableNotificationsApi {
+    private requestFactory: NotificationsApiRequestFactory;
+    private responseProcessor: NotificationsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: NotificationsApiRequestFactory,
+        responseProcessor?: NotificationsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new NotificationsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new NotificationsApiResponseProcessor();
+    }
+
+    /**
+     */
+    public findAll(_options?: Configuration): Observable<Array<Notification>> {
+        const requestContextPromise = this.requestFactory.findAll(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findAll(rsp)));
+            }));
+    }
+
+    /**
+     * @param id 
+     * @param readNotificationDto 
+     */
+    public markRead(id: string, readNotificationDto: ReadNotificationDto, _options?: Configuration): Observable<Notification> {
+        const requestContextPromise = this.requestFactory.markRead(id, readNotificationDto, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.markRead(rsp)));
             }));
     }
 

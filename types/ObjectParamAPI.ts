@@ -6,6 +6,8 @@ import { AccessTokenDto } from '../models/AccessTokenDto';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
+import { Notification } from '../models/Notification';
+import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpsertUserDto } from '../models/UpsertUserDto';
 import { User } from '../models/User';
@@ -56,6 +58,50 @@ export class ObjectDefaultApi {
      */
     public getHello(param: DefaultApiGetHelloRequest = {}, options?: Configuration): Promise<HelloResponse> {
         return this.api.getHello( options).toPromise();
+    }
+
+}
+
+import { ObservableNotificationsApi } from "./ObservableAPI";
+import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor} from "../apis/NotificationsApi";
+
+export interface NotificationsApiFindAllRequest {
+}
+
+export interface NotificationsApiMarkReadRequest {
+    /**
+     * 
+     * @type string
+     * @memberof NotificationsApimarkRead
+     */
+    id: string
+    /**
+     * 
+     * @type ReadNotificationDto
+     * @memberof NotificationsApimarkRead
+     */
+    readNotificationDto: ReadNotificationDto
+}
+
+export class ObjectNotificationsApi {
+    private api: ObservableNotificationsApi
+
+    public constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor) {
+        this.api = new ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public findAll(param: NotificationsApiFindAllRequest = {}, options?: Configuration): Promise<Array<Notification>> {
+        return this.api.findAll( options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public markRead(param: NotificationsApiMarkReadRequest, options?: Configuration): Promise<Notification> {
+        return this.api.markRead(param.id, param.readNotificationDto,  options).toPromise();
     }
 
 }

@@ -6,6 +6,8 @@ import { AccessTokenDto } from '../models/AccessTokenDto';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
+import { Notification } from '../models/Notification';
+import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpsertUserDto } from '../models/UpsertUserDto';
 import { User } from '../models/User';
@@ -54,6 +56,41 @@ export class PromiseDefaultApi {
      */
     public getHello(_options?: Configuration): Promise<HelloResponse> {
         const result = this.api.getHello(_options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableNotificationsApi } from './ObservableAPI';
+
+import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor} from "../apis/NotificationsApi";
+export class PromiseNotificationsApi {
+    private api: ObservableNotificationsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: NotificationsApiRequestFactory,
+        responseProcessor?: NotificationsApiResponseProcessor
+    ) {
+        this.api = new ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     */
+    public findAll(_options?: Configuration): Promise<Array<Notification>> {
+        const result = this.api.findAll(_options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param id 
+     * @param readNotificationDto 
+     */
+    public markRead(id: string, readNotificationDto: ReadNotificationDto, _options?: Configuration): Promise<Notification> {
+        const result = this.api.markRead(id, readNotificationDto, _options);
         return result.toPromise();
     }
 

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ObjectUsersApi = exports.ObjectDefaultApi = exports.ObjectAuthApi = void 0;
+exports.ObjectUsersApi = exports.ObjectNotificationsApi = exports.ObjectDefaultApi = exports.ObjectAuthApi = void 0;
 var ObservableAPI_1 = require("./ObservableAPI");
 var ObjectAuthApi = (function () {
     function ObjectAuthApi(configuration, requestFactory, responseProcessor) {
@@ -25,9 +25,24 @@ var ObjectDefaultApi = (function () {
 }());
 exports.ObjectDefaultApi = ObjectDefaultApi;
 var ObservableAPI_3 = require("./ObservableAPI");
+var ObjectNotificationsApi = (function () {
+    function ObjectNotificationsApi(configuration, requestFactory, responseProcessor) {
+        this.api = new ObservableAPI_3.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
+    }
+    ObjectNotificationsApi.prototype.findAll = function (param, options) {
+        if (param === void 0) { param = {}; }
+        return this.api.findAll(options).toPromise();
+    };
+    ObjectNotificationsApi.prototype.markRead = function (param, options) {
+        return this.api.markRead(param.id, param.readNotificationDto, options).toPromise();
+    };
+    return ObjectNotificationsApi;
+}());
+exports.ObjectNotificationsApi = ObjectNotificationsApi;
+var ObservableAPI_4 = require("./ObservableAPI");
 var ObjectUsersApi = (function () {
     function ObjectUsersApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_3.ObservableUsersApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_4.ObservableUsersApi(configuration, requestFactory, responseProcessor);
     }
     ObjectUsersApi.prototype.findOne = function (param, options) {
         return this.api.findOne(param.accountId, options).toPromise();

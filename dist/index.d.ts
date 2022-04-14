@@ -6,4 +6,4 @@ export { Configuration } from "./configuration";
 export * from "./apis/exception";
 export * from "./servers";
 export { PromiseMiddleware as Middleware } from './middleware';
-export { PromiseAuthApi as AuthApi, PromiseDefaultApi as DefaultApi, PromiseUsersApi as UsersApi } from './types/PromiseAPI';
+export { PromiseAuthApi as AuthApi, PromiseDefaultApi as DefaultApi, PromiseNotificationsApi as NotificationsApi, PromiseUsersApi as UsersApi } from './types/PromiseAPI';

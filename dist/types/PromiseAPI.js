@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PromiseUsersApi = exports.PromiseDefaultApi = exports.PromiseAuthApi = void 0;
+exports.PromiseUsersApi = exports.PromiseNotificationsApi = exports.PromiseDefaultApi = exports.PromiseAuthApi = void 0;
 var ObservableAPI_1 = require("./ObservableAPI");
 var PromiseAuthApi = (function () {
     function PromiseAuthApi(configuration, requestFactory, responseProcessor) {
@@ -26,9 +26,25 @@ var PromiseDefaultApi = (function () {
 }());
 exports.PromiseDefaultApi = PromiseDefaultApi;
 var ObservableAPI_3 = require("./ObservableAPI");
+var PromiseNotificationsApi = (function () {
+    function PromiseNotificationsApi(configuration, requestFactory, responseProcessor) {
+        this.api = new ObservableAPI_3.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
+    }
+    PromiseNotificationsApi.prototype.findAll = function (_options) {
+        var result = this.api.findAll(_options);
+        return result.toPromise();
+    };
+    PromiseNotificationsApi.prototype.markRead = function (id, readNotificationDto, _options) {
+        var result = this.api.markRead(id, readNotificationDto, _options);
+        return result.toPromise();
+    };
+    return PromiseNotificationsApi;
+}());
+exports.PromiseNotificationsApi = PromiseNotificationsApi;
+var ObservableAPI_4 = require("./ObservableAPI");
 var PromiseUsersApi = (function () {
     function PromiseUsersApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_3.ObservableUsersApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_4.ObservableUsersApi(configuration, requestFactory, responseProcessor);
     }
     PromiseUsersApi.prototype.findOne = function (accountId, _options) {
         var result = this.api.findOne(accountId, _options);

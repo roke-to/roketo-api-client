@@ -15,6 +15,8 @@ __exportStar(require("./AccessTokenDto"), exports);
 __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);
+__exportStar(require("./Notification"), exports);
+__exportStar(require("./ReadNotificationDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
 __exportStar(require("./UpsertUserDto"), exports);
 __exportStar(require("./User"), exports);
@@ -22,6 +24,8 @@ var AccessTokenDto_1 = require("./AccessTokenDto");
 var BadRequest_1 = require("./BadRequest");
 var HelloResponse_1 = require("./HelloResponse");
 var LoginDto_1 = require("./LoginDto");
+var Notification_1 = require("./Notification");
+var ReadNotificationDto_1 = require("./ReadNotificationDto");
 var Unauthorized_1 = require("./Unauthorized");
 var UpsertUserDto_1 = require("./UpsertUserDto");
 var User_1 = require("./User");
@@ -40,12 +44,16 @@ var supportedMediaTypes = {
     "application/octet-stream": 0,
     "application/x-www-form-urlencoded": 0
 };
-var enumsMap = new Set([]);
+var enumsMap = new Set([
+    "NotificationTypeEnum",
+]);
 var typeMap = {
     "AccessTokenDto": AccessTokenDto_1.AccessTokenDto,
     "BadRequest": BadRequest_1.BadRequest,
     "HelloResponse": HelloResponse_1.HelloResponse,
     "LoginDto": LoginDto_1.LoginDto,
+    "Notification": Notification_1.Notification,
+    "ReadNotificationDto": ReadNotificationDto_1.ReadNotificationDto,
     "Unauthorized": Unauthorized_1.Unauthorized,
     "UpsertUserDto": UpsertUserDto_1.UpsertUserDto,
     "User": User_1.User,

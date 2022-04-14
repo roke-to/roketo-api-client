@@ -2,6 +2,8 @@ import { Configuration } from '../configuration';
 import { AccessTokenDto } from '../models/AccessTokenDto';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
+import { Notification } from '../models/Notification';
+import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { UpsertUserDto } from '../models/UpsertUserDto';
 import { User } from '../models/User';
 import { AuthApiRequestFactory, AuthApiResponseProcessor } from "../apis/AuthApi";
@@ -15,6 +17,13 @@ export declare class PromiseDefaultApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: DefaultApiRequestFactory, responseProcessor?: DefaultApiResponseProcessor);
     getHello(_options?: Configuration): Promise<HelloResponse>;
+}
+import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor } from "../apis/NotificationsApi";
+export declare class PromiseNotificationsApi {
+    private api;
+    constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
+    findAll(_options?: Configuration): Promise<Array<Notification>>;
+    markRead(id: string, readNotificationDto: ReadNotificationDto, _options?: Configuration): Promise<Notification>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export declare class PromiseUsersApi {
