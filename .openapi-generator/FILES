@@ -25,7 +25,7 @@ models/Notification.ts
 models/ObjectSerializer.ts
 models/ReadNotificationDto.ts
 models/Unauthorized.ts
-models/UpsertUserDto.ts
+models/UpdateUserDto.ts
 models/User.ts
 models/all.ts
 package.json

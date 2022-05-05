@@ -5,17 +5,17 @@ export * from './LoginDto';
 export * from './Notification';
 export * from './ReadNotificationDto';
 export * from './Unauthorized';
-export * from './UpsertUserDto';
+export * from './UpdateUserDto';
 export * from './User';
 
 import { AccessTokenDto } from './AccessTokenDto';
 import { BadRequest } from './BadRequest';
 import { HelloResponse } from './HelloResponse';
 import { LoginDto } from './LoginDto';
-import { Notification    , NotificationTypeEnum    } from './Notification';
+import { Notification     , NotificationTypeEnum    } from './Notification';
 import { ReadNotificationDto } from './ReadNotificationDto';
 import { Unauthorized } from './Unauthorized';
-import { UpsertUserDto } from './UpsertUserDto';
+import { UpdateUserDto } from './UpdateUserDto';
 import { User } from './User';
 
 /* tslint:disable:no-unused-variable */
@@ -49,7 +49,7 @@ let typeMap: {[index: string]: any} = {
     "Notification": Notification,
     "ReadNotificationDto": ReadNotificationDto,
     "Unauthorized": Unauthorized,
-    "UpsertUserDto": UpsertUserDto,
+    "UpdateUserDto": UpdateUserDto,
     "User": User,
 }
 

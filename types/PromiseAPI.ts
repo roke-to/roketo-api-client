@@ -9,7 +9,7 @@ import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
 import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
-import { UpsertUserDto } from '../models/UpsertUserDto';
+import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 import { ObservableAuthApi } from './ObservableAPI';
 
@@ -131,10 +131,10 @@ export class PromiseUsersApi {
 
     /**
      * @param accountId 
-     * @param upsertUserDto 
+     * @param updateUserDto 
      */
-    public upsert(accountId: string, upsertUserDto: UpsertUserDto, _options?: Configuration): Promise<User> {
-        const result = this.api.upsert(accountId, upsertUserDto, _options);
+    public update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Promise<void> {
+        const result = this.api.update(accountId, updateUserDto, _options);
         return result.toPromise();
     }
 

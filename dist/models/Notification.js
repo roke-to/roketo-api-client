@@ -22,6 +22,12 @@ var Notification = (function () {
             "format": ""
         },
         {
+            "name": "streamId",
+            "baseName": "streamId",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "createdAt",
             "baseName": "createdAt",
             "type": "number",

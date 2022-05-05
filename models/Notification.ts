@@ -15,6 +15,7 @@ import { HttpFile } from '../http/http';
 export class Notification {
     'id': string;
     'accountId': string;
+    'streamId': string;
     'createdAt': number;
     'isRead': boolean;
     'type': NotificationTypeEnum;
@@ -32,6 +33,12 @@ export class Notification {
         {
             "name": "accountId",
             "baseName": "accountId",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "streamId",
+            "baseName": "streamId",
             "type": "string",
             "format": ""
         },
@@ -69,5 +76,5 @@ export class Notification {
 }
 
 
-export type NotificationTypeEnum = "StreamCreated" ;
+export type NotificationTypeEnum = "StreamStarted" | "StreamPaused" | "StreamFinished" | "StreamIsDue" | "StreamContinued" ;
 

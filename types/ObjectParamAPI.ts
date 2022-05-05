@@ -9,7 +9,7 @@ import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
 import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
-import { UpsertUserDto } from '../models/UpsertUserDto';
+import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 
 import { ObservableAuthApi } from "./ObservableAPI";
@@ -127,19 +127,19 @@ export interface UsersApiGetAvatarUrlRequest {
     accountId: string
 }
 
-export interface UsersApiUpsertRequest {
+export interface UsersApiUpdateRequest {
     /**
      * 
      * @type string
-     * @memberof UsersApiupsert
+     * @memberof UsersApiupdate
      */
     accountId: string
     /**
      * 
-     * @type UpsertUserDto
-     * @memberof UsersApiupsert
+     * @type UpdateUserDto
+     * @memberof UsersApiupdate
      */
-    upsertUserDto: UpsertUserDto
+    updateUserDto: UpdateUserDto
 }
 
 export class ObjectUsersApi {
@@ -166,8 +166,8 @@ export class ObjectUsersApi {
     /**
      * @param param the request object
      */
-    public upsert(param: UsersApiUpsertRequest, options?: Configuration): Promise<User> {
-        return this.api.upsert(param.accountId, param.upsertUserDto,  options).toPromise();
+    public update(param: UsersApiUpdateRequest, options?: Configuration): Promise<void> {
+        return this.api.update(param.accountId, param.updateUserDto,  options).toPromise();
     }
 
 }

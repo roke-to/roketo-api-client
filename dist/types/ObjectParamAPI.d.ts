@@ -4,7 +4,7 @@ import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
 import { ReadNotificationDto } from '../models/ReadNotificationDto';
-import { UpsertUserDto } from '../models/UpsertUserDto';
+import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 import { AuthApiRequestFactory, AuthApiResponseProcessor } from "../apis/AuthApi";
 export interface AuthApiLoginRequest {
@@ -43,14 +43,14 @@ export interface UsersApiFindOneRequest {
 export interface UsersApiGetAvatarUrlRequest {
     accountId: string;
 }
-export interface UsersApiUpsertRequest {
+export interface UsersApiUpdateRequest {
     accountId: string;
-    upsertUserDto: UpsertUserDto;
+    updateUserDto: UpdateUserDto;
 }
 export declare class ObjectUsersApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: UsersApiRequestFactory, responseProcessor?: UsersApiResponseProcessor);
     findOne(param: UsersApiFindOneRequest, options?: Configuration): Promise<User>;
     getAvatarUrl(param: UsersApiGetAvatarUrlRequest, options?: Configuration): Promise<void>;
-    upsert(param: UsersApiUpsertRequest, options?: Configuration): Promise<User>;
+    update(param: UsersApiUpdateRequest, options?: Configuration): Promise<void>;
 }

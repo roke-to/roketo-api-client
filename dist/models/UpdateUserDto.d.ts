@@ -1,11 +1,6 @@
-export declare class Notification {
-    'id': string;
-    'accountId': string;
-    'streamId': string;
-    'createdAt': number;
-    'isRead': boolean;
-    'type': NotificationTypeEnum;
-    'payload': any;
+export declare class UpdateUserDto {
+    'name': string;
+    'email': string;
     static readonly discriminator: string | undefined;
     static readonly attributeTypeMap: Array<{
         name: string;
@@ -21,4 +16,3 @@ export declare class Notification {
     }[];
     constructor();
 }
-export declare type NotificationTypeEnum = "StreamStarted" | "StreamPaused" | "StreamFinished" | "StreamIsDue" | "StreamContinued";

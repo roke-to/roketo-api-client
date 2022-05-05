@@ -184,9 +184,9 @@ var ObservableUsersApi = (function () {
             return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.getAvatarUrl(rsp); }));
         }));
     };
-    ObservableUsersApi.prototype.upsert = function (accountId, upsertUserDto, _options) {
+    ObservableUsersApi.prototype.update = function (accountId, updateUserDto, _options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.upsert(accountId, upsertUserDto, _options);
+        var requestContextPromise = this.requestFactory.update(accountId, updateUserDto, _options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_13 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -205,7 +205,7 @@ var ObservableUsersApi = (function () {
                 var middleware = _a[_i];
                 _loop_14(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.upsert(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.update(rsp); }));
         }));
     };
     return ObservableUsersApi;

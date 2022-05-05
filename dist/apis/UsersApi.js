@@ -119,7 +119,7 @@ var UsersApiRequestFactory = (function (_super) {
             });
         });
     };
-    UsersApiRequestFactory.prototype.upsert = function (accountId, upsertUserDto, _options) {
+    UsersApiRequestFactory.prototype.update = function (accountId, updateUserDto, _options) {
         var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function () {
             var _config, localVarPath, requestContext, contentType, serializedBody, authMethod, defaultAuth;
@@ -128,10 +128,10 @@ var UsersApiRequestFactory = (function (_super) {
                     case 0:
                         _config = _options || this.configuration;
                         if (accountId === null || accountId === undefined) {
-                            throw new baseapi_1.RequiredError("UsersApi", "upsert", "accountId");
+                            throw new baseapi_1.RequiredError("UsersApi", "update", "accountId");
                         }
-                        if (upsertUserDto === null || upsertUserDto === undefined) {
-                            throw new baseapi_1.RequiredError("UsersApi", "upsert", "upsertUserDto");
+                        if (updateUserDto === null || updateUserDto === undefined) {
+                            throw new baseapi_1.RequiredError("UsersApi", "update", "updateUserDto");
                         }
                         localVarPath = '/users/{accountId}'
                             .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)));
@@ -141,7 +141,7 @@ var UsersApiRequestFactory = (function (_super) {
                             "application/json"
                         ]);
                         requestContext.setHeaderParam("Content-Type", contentType);
-                        serializedBody = ObjectSerializer_1.ObjectSerializer.stringify(ObjectSerializer_1.ObjectSerializer.serialize(upsertUserDto, "UpsertUserDto", ""), contentType);
+                        serializedBody = ObjectSerializer_1.ObjectSerializer.stringify(ObjectSerializer_1.ObjectSerializer.serialize(updateUserDto, "UpdateUserDto", ""), contentType);
                         requestContext.setBody(serializedBody);
                         authMethod = _config.authMethods["bearer"];
                         if (!(authMethod === null || authMethod === void 0 ? void 0 : authMethod.applySecurityAuthentication)) return [3, 2];
@@ -232,41 +232,36 @@ var UsersApiResponseProcessor = (function () {
             });
         });
     };
-    UsersApiResponseProcessor.prototype.upsert = function (response) {
+    UsersApiResponseProcessor.prototype.update = function (response) {
         return __awaiter(this, void 0, void 0, function () {
-            var contentType, body, _a, _b, _c, _d, body, _e, _f, _g, _h, body, _j, _k, _l, _m, _o, _p;
-            return __generator(this, function (_q) {
-                switch (_q.label) {
+            var contentType, body, _a, _b, _c, _d, body, _e, _f, _g, _h, _j, _k;
+            return __generator(this, function (_l) {
+                switch (_l.label) {
                     case 0:
                         contentType = ObjectSerializer_1.ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-                        if (!util_1.isCodeInRange("200", response.httpStatusCode)) return [3, 2];
+                        if (util_1.isCodeInRange("204", response.httpStatusCode)) {
+                            return [2];
+                        }
+                        if (!util_1.isCodeInRange("401", response.httpStatusCode)) return [3, 2];
                         _b = (_a = ObjectSerializer_1.ObjectSerializer).deserialize;
                         _d = (_c = ObjectSerializer_1.ObjectSerializer).parse;
                         return [4, response.body.text()];
                     case 1:
-                        body = _b.apply(_a, [_d.apply(_c, [_q.sent(), contentType]), "User", ""]);
-                        return [2, body];
+                        body = _b.apply(_a, [_d.apply(_c, [_l.sent(), contentType]), "Unauthorized", ""]);
+                        throw new exception_1.ApiException(401, "", body, response.headers);
                     case 2:
-                        if (!util_1.isCodeInRange("401", response.httpStatusCode)) return [3, 4];
+                        if (!(response.httpStatusCode >= 200 && response.httpStatusCode <= 299)) return [3, 4];
                         _f = (_e = ObjectSerializer_1.ObjectSerializer).deserialize;
                         _h = (_g = ObjectSerializer_1.ObjectSerializer).parse;
                         return [4, response.body.text()];
                     case 3:
-                        body = _f.apply(_e, [_h.apply(_g, [_q.sent(), contentType]), "Unauthorized", ""]);
-                        throw new exception_1.ApiException(401, "", body, response.headers);
-                    case 4:
-                        if (!(response.httpStatusCode >= 200 && response.httpStatusCode <= 299)) return [3, 6];
-                        _k = (_j = ObjectSerializer_1.ObjectSerializer).deserialize;
-                        _m = (_l = ObjectSerializer_1.ObjectSerializer).parse;
-                        return [4, response.body.text()];
-                    case 5:
-                        body = _k.apply(_j, [_m.apply(_l, [_q.sent(), contentType]), "User", ""]);
+                        body = _f.apply(_e, [_h.apply(_g, [_l.sent(), contentType]), "void", ""]);
                         return [2, body];
-                    case 6:
-                        _o = exception_1.ApiException.bind;
-                        _p = [void 0, response.httpStatusCode, "Unknown API Status Code!"];
+                    case 4:
+                        _j = exception_1.ApiException.bind;
+                        _k = [void 0, response.httpStatusCode, "Unknown API Status Code!"];
                         return [4, response.getBodyAsAny()];
-                    case 7: throw new (_o.apply(exception_1.ApiException, _p.concat([_q.sent(), response.headers])))();
+                    case 5: throw new (_j.apply(exception_1.ApiException, _k.concat([_l.sent(), response.headers])))();
                 }
             });
         });

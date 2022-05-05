@@ -5,5 +5,5 @@ export * from './LoginDto';
 export * from './Notification';
 export * from './ReadNotificationDto';
 export * from './Unauthorized';
-export * from './UpsertUserDto';
+export * from './UpdateUserDto';
 export * from './User';

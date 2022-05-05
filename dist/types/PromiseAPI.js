@@ -54,8 +54,8 @@ var PromiseUsersApi = (function () {
         var result = this.api.getAvatarUrl(accountId, _options);
         return result.toPromise();
     };
-    PromiseUsersApi.prototype.upsert = function (accountId, upsertUserDto, _options) {
-        var result = this.api.upsert(accountId, upsertUserDto, _options);
+    PromiseUsersApi.prototype.update = function (accountId, updateUserDto, _options) {
+        var result = this.api.update(accountId, updateUserDto, _options);
         return result.toPromise();
     };
     return PromiseUsersApi;

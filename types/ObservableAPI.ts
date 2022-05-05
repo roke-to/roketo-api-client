@@ -10,7 +10,7 @@ import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
 import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
-import { UpsertUserDto } from '../models/UpsertUserDto';
+import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 
 import { AuthApiRequestFactory, AuthApiResponseProcessor} from "../apis/AuthApi";
@@ -216,10 +216,10 @@ export class ObservableUsersApi {
 
     /**
      * @param accountId 
-     * @param upsertUserDto 
+     * @param updateUserDto 
      */
-    public upsert(accountId: string, upsertUserDto: UpsertUserDto, _options?: Configuration): Observable<User> {
-        const requestContextPromise = this.requestFactory.upsert(accountId, upsertUserDto, _options);
+    public update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.update(accountId, updateUserDto, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -233,7 +233,7 @@ export class ObservableUsersApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.upsert(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.update(rsp)));
             }));
     }
 

@@ -17,6 +17,6 @@ __exportStar(require("./LoginDto"), exports);
 __exportStar(require("./Notification"), exports);
 __exportStar(require("./ReadNotificationDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
-__exportStar(require("./UpsertUserDto"), exports);
+__exportStar(require("./UpdateUserDto"), exports);
 __exportStar(require("./User"), exports);
 //# sourceMappingURL=all.js.map

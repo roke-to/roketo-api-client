@@ -5,7 +5,7 @@ import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
 import { ReadNotificationDto } from '../models/ReadNotificationDto';
-import { UpsertUserDto } from '../models/UpsertUserDto';
+import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 import { AuthApiRequestFactory, AuthApiResponseProcessor } from "../apis/AuthApi";
 export declare class ObservableAuthApi {
@@ -40,5 +40,5 @@ export declare class ObservableUsersApi {
     constructor(configuration: Configuration, requestFactory?: UsersApiRequestFactory, responseProcessor?: UsersApiResponseProcessor);
     findOne(accountId: string, _options?: Configuration): Observable<User>;
     getAvatarUrl(accountId: string, _options?: Configuration): Observable<void>;
-    upsert(accountId: string, upsertUserDto: UpsertUserDto, _options?: Configuration): Observable<User>;
+    update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Observable<void>;
 }

@@ -18,7 +18,7 @@ __exportStar(require("./LoginDto"), exports);
 __exportStar(require("./Notification"), exports);
 __exportStar(require("./ReadNotificationDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
-__exportStar(require("./UpsertUserDto"), exports);
+__exportStar(require("./UpdateUserDto"), exports);
 __exportStar(require("./User"), exports);
 var AccessTokenDto_1 = require("./AccessTokenDto");
 var BadRequest_1 = require("./BadRequest");
@@ -27,7 +27,7 @@ var LoginDto_1 = require("./LoginDto");
 var Notification_1 = require("./Notification");
 var ReadNotificationDto_1 = require("./ReadNotificationDto");
 var Unauthorized_1 = require("./Unauthorized");
-var UpsertUserDto_1 = require("./UpsertUserDto");
+var UpdateUserDto_1 = require("./UpdateUserDto");
 var User_1 = require("./User");
 var primitives = [
     "string",
@@ -55,7 +55,7 @@ var typeMap = {
     "Notification": Notification_1.Notification,
     "ReadNotificationDto": ReadNotificationDto_1.ReadNotificationDto,
     "Unauthorized": Unauthorized_1.Unauthorized,
-    "UpsertUserDto": UpsertUserDto_1.UpsertUserDto,
+    "UpdateUserDto": UpdateUserDto_1.UpdateUserDto,
     "User": User_1.User,
 };
 var ObjectSerializer = (function () {
