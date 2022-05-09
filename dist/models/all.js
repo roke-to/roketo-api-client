@@ -15,7 +15,6 @@ __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);
 __exportStar(require("./Notification"), exports);
-__exportStar(require("./ReadNotificationDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
 __exportStar(require("./UpdateUserDto"), exports);
 __exportStar(require("./User"), exports);

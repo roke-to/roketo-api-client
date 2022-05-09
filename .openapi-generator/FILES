@@ -23,7 +23,6 @@ models/HelloResponse.ts
 models/LoginDto.ts
 models/Notification.ts
 models/ObjectSerializer.ts
-models/ReadNotificationDto.ts
 models/Unauthorized.ts
 models/UpdateUserDto.ts
 models/User.ts

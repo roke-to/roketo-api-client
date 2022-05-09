@@ -4,7 +4,6 @@ import { AccessTokenDto } from '../models/AccessTokenDto';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
-import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 import { AuthApiRequestFactory, AuthApiResponseProcessor } from "../apis/AuthApi";
@@ -30,7 +29,7 @@ export declare class ObservableNotificationsApi {
     private configuration;
     constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
     findAll(_options?: Configuration): Observable<Array<Notification>>;
-    markRead(id: string, readNotificationDto: ReadNotificationDto, _options?: Configuration): Observable<Notification>;
+    markAllRead(_options?: Configuration): Observable<void>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export declare class ObservableUsersApi {

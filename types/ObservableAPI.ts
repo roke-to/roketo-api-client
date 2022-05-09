@@ -8,7 +8,6 @@ import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
-import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
@@ -130,11 +129,9 @@ export class ObservableNotificationsApi {
     }
 
     /**
-     * @param id 
-     * @param readNotificationDto 
      */
-    public markRead(id: string, readNotificationDto: ReadNotificationDto, _options?: Configuration): Observable<Notification> {
-        const requestContextPromise = this.requestFactory.markRead(id, readNotificationDto, _options);
+    public markAllRead(_options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.markAllRead(_options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -148,7 +145,7 @@ export class ObservableNotificationsApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.markRead(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.markAllRead(rsp)));
             }));
     }
 

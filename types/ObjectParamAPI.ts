@@ -7,7 +7,6 @@ import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
-import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
@@ -68,19 +67,7 @@ import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor} from
 export interface NotificationsApiFindAllRequest {
 }
 
-export interface NotificationsApiMarkReadRequest {
-    /**
-     * 
-     * @type string
-     * @memberof NotificationsApimarkRead
-     */
-    id: string
-    /**
-     * 
-     * @type ReadNotificationDto
-     * @memberof NotificationsApimarkRead
-     */
-    readNotificationDto: ReadNotificationDto
+export interface NotificationsApiMarkAllReadRequest {
 }
 
 export class ObjectNotificationsApi {
@@ -100,8 +87,8 @@ export class ObjectNotificationsApi {
     /**
      * @param param the request object
      */
-    public markRead(param: NotificationsApiMarkReadRequest, options?: Configuration): Promise<Notification> {
-        return this.api.markRead(param.id, param.readNotificationDto,  options).toPromise();
+    public markAllRead(param: NotificationsApiMarkAllReadRequest = {}, options?: Configuration): Promise<void> {
+        return this.api.markAllRead( options).toPromise();
     }
 
 }

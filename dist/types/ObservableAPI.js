@@ -102,9 +102,9 @@ var ObservableNotificationsApi = (function () {
             return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.findAll(rsp); }));
         }));
     };
-    ObservableNotificationsApi.prototype.markRead = function (id, readNotificationDto, _options) {
+    ObservableNotificationsApi.prototype.markAllRead = function (_options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.markRead(id, readNotificationDto, _options);
+        var requestContextPromise = this.requestFactory.markAllRead(_options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_7 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -123,7 +123,7 @@ var ObservableNotificationsApi = (function () {
                 var middleware = _a[_i];
                 _loop_8(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.markRead(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.markAllRead(rsp); }));
         }));
     };
     return ObservableNotificationsApi;

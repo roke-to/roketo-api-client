@@ -3,7 +3,6 @@ export * from './BadRequest';
 export * from './HelloResponse';
 export * from './LoginDto';
 export * from './Notification';
-export * from './ReadNotificationDto';
 export * from './Unauthorized';
 export * from './UpdateUserDto';
 export * from './User';
@@ -13,7 +12,6 @@ import { BadRequest } from './BadRequest';
 import { HelloResponse } from './HelloResponse';
 import { LoginDto } from './LoginDto';
 import { Notification     , NotificationTypeEnum    } from './Notification';
-import { ReadNotificationDto } from './ReadNotificationDto';
 import { Unauthorized } from './Unauthorized';
 import { UpdateUserDto } from './UpdateUserDto';
 import { User } from './User';
@@ -47,7 +45,6 @@ let typeMap: {[index: string]: any} = {
     "HelloResponse": HelloResponse,
     "LoginDto": LoginDto,
     "Notification": Notification,
-    "ReadNotificationDto": ReadNotificationDto,
     "Unauthorized": Unauthorized,
     "UpdateUserDto": UpdateUserDto,
     "User": User,

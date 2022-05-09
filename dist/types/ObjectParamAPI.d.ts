@@ -3,7 +3,6 @@ import { AccessTokenDto } from '../models/AccessTokenDto';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
-import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
 import { AuthApiRequestFactory, AuthApiResponseProcessor } from "../apis/AuthApi";
@@ -26,15 +25,13 @@ export declare class ObjectDefaultApi {
 import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor } from "../apis/NotificationsApi";
 export interface NotificationsApiFindAllRequest {
 }
-export interface NotificationsApiMarkReadRequest {
-    id: string;
-    readNotificationDto: ReadNotificationDto;
+export interface NotificationsApiMarkAllReadRequest {
 }
 export declare class ObjectNotificationsApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
     findAll(param?: NotificationsApiFindAllRequest, options?: Configuration): Promise<Array<Notification>>;
-    markRead(param: NotificationsApiMarkReadRequest, options?: Configuration): Promise<Notification>;
+    markAllRead(param?: NotificationsApiMarkAllReadRequest, options?: Configuration): Promise<void>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export interface UsersApiFindOneRequest {

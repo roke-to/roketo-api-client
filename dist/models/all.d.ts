@@ -3,7 +3,6 @@ export * from './BadRequest';
 export * from './HelloResponse';
 export * from './LoginDto';
 export * from './Notification';
-export * from './ReadNotificationDto';
 export * from './Unauthorized';
 export * from './UpdateUserDto';
 export * from './User';

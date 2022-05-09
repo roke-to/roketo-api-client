@@ -34,8 +34,8 @@ var PromiseNotificationsApi = (function () {
         var result = this.api.findAll(_options);
         return result.toPromise();
     };
-    PromiseNotificationsApi.prototype.markRead = function (id, readNotificationDto, _options) {
-        var result = this.api.markRead(id, readNotificationDto, _options);
+    PromiseNotificationsApi.prototype.markAllRead = function (_options) {
+        var result = this.api.markAllRead(_options);
         return result.toPromise();
     };
     return PromiseNotificationsApi;

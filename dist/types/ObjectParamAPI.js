@@ -33,8 +33,9 @@ var ObjectNotificationsApi = (function () {
         if (param === void 0) { param = {}; }
         return this.api.findAll(options).toPromise();
     };
-    ObjectNotificationsApi.prototype.markRead = function (param, options) {
-        return this.api.markRead(param.id, param.readNotificationDto, options).toPromise();
+    ObjectNotificationsApi.prototype.markAllRead = function (param, options) {
+        if (param === void 0) { param = {}; }
+        return this.api.markAllRead(options).toPromise();
     };
     return ObjectNotificationsApi;
 }());

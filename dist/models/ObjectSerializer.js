@@ -16,7 +16,6 @@ __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);
 __exportStar(require("./Notification"), exports);
-__exportStar(require("./ReadNotificationDto"), exports);
 __exportStar(require("./Unauthorized"), exports);
 __exportStar(require("./UpdateUserDto"), exports);
 __exportStar(require("./User"), exports);
@@ -25,7 +24,6 @@ var BadRequest_1 = require("./BadRequest");
 var HelloResponse_1 = require("./HelloResponse");
 var LoginDto_1 = require("./LoginDto");
 var Notification_1 = require("./Notification");
-var ReadNotificationDto_1 = require("./ReadNotificationDto");
 var Unauthorized_1 = require("./Unauthorized");
 var UpdateUserDto_1 = require("./UpdateUserDto");
 var User_1 = require("./User");
@@ -53,7 +51,6 @@ var typeMap = {
     "HelloResponse": HelloResponse_1.HelloResponse,
     "LoginDto": LoginDto_1.LoginDto,
     "Notification": Notification_1.Notification,
-    "ReadNotificationDto": ReadNotificationDto_1.ReadNotificationDto,
     "Unauthorized": Unauthorized_1.Unauthorized,
     "UpdateUserDto": UpdateUserDto_1.UpdateUserDto,
     "User": User_1.User,

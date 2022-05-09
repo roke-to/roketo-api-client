@@ -7,7 +7,6 @@ import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
-import { ReadNotificationDto } from '../models/ReadNotificationDto';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
@@ -86,11 +85,9 @@ export class PromiseNotificationsApi {
     }
 
     /**
-     * @param id 
-     * @param readNotificationDto 
      */
-    public markRead(id: string, readNotificationDto: ReadNotificationDto, _options?: Configuration): Promise<Notification> {
-        const result = this.api.markRead(id, readNotificationDto, _options);
+    public markAllRead(_options?: Configuration): Promise<void> {
+        const result = this.api.markAllRead(_options);
         return result.toPromise();
     }
 
