@@ -30,8 +30,8 @@ var Notification = (function () {
         {
             "name": "createdAt",
             "baseName": "createdAt",
-            "type": "number",
-            "format": ""
+            "type": "Date",
+            "format": "date-time"
         },
         {
             "name": "isRead",

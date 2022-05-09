@@ -16,7 +16,7 @@ export class Notification {
     'id': string;
     'accountId': string;
     'streamId': string;
-    'createdAt': number;
+    'createdAt': Date;
     'isRead': boolean;
     'type': NotificationTypeEnum;
     'payload': any;
@@ -45,8 +45,8 @@ export class Notification {
         {
             "name": "createdAt",
             "baseName": "createdAt",
-            "type": "number",
-            "format": ""
+            "type": "Date",
+            "format": "date-time"
         },
         {
             "name": "isRead",

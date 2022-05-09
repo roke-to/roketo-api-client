@@ -2,7 +2,7 @@ export declare class Notification {
     'id': string;
     'accountId': string;
     'streamId': string;
-    'createdAt': number;
+    'createdAt': Date;
     'isRead': boolean;
     'type': NotificationTypeEnum;
     'payload': any;
