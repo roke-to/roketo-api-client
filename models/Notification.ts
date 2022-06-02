@@ -76,5 +76,5 @@ export class Notification {
 }
 
 
-export type NotificationTypeEnum = "StreamStarted" | "StreamPaused" | "StreamFinished" | "StreamIsDue" | "StreamContinued" ;
+export type NotificationTypeEnum = "StreamStarted" | "StreamPaused" | "StreamFinished" | "StreamIsDue" | "StreamContinued" | "StreamCliffPassed" ;
 
