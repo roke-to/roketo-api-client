@@ -21,4 +21,4 @@ export declare class Notification {
     }[];
     constructor();
 }
-export declare type NotificationTypeEnum = "StreamStarted" | "StreamPaused" | "StreamFinished" | "StreamIsDue" | "StreamContinued" | "StreamCliffPassed";
+export declare type NotificationTypeEnum = "StreamStarted" | "StreamPaused" | "StreamFinished" | "StreamIsDue" | "StreamContinued" | "StreamCliffPassed" | "StreamFundsAdded";
