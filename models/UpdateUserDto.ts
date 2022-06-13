@@ -16,15 +16,15 @@ export class UpdateUserDto {
     /**
     * The name of a user.
     */
-    'name': string;
+    'name'?: string;
     /**
     * The email of a user.
     */
-    'email': string;
+    'email'?: string;
     /**
     * User's allowance for email notifications.
     */
-    'allowNotifications': boolean;
+    'allowNotifications'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
