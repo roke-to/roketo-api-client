@@ -38,6 +38,12 @@ var User = (function () {
             "baseName": "verificationEmailSentAt",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "allowNotifications",
+            "baseName": "allowNotifications",
+            "type": "boolean",
+            "format": ""
         }
     ];
     return User;

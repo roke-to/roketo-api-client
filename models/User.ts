@@ -18,6 +18,7 @@ export class User {
     'email': string;
     'isEmailVerified': boolean;
     'verificationEmailSentAt': Date;
+    'allowNotifications': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -51,6 +52,12 @@ export class User {
             "baseName": "verificationEmailSentAt",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "allowNotifications",
+            "baseName": "allowNotifications",
+            "type": "boolean",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

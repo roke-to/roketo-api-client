@@ -4,6 +4,7 @@ export declare class User {
     'email': string;
     'isEmailVerified': boolean;
     'verificationEmailSentAt': Date;
+    'allowNotifications': boolean;
     static readonly discriminator: string | undefined;
     static readonly attributeTypeMap: Array<{
         name: string;
