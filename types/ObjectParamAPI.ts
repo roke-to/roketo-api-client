@@ -114,6 +114,15 @@ export interface UsersApiGetAvatarUrlRequest {
     accountId: string
 }
 
+export interface UsersApiResendVerificationEmailRequest {
+    /**
+     * 
+     * @type string
+     * @memberof UsersApiresendVerificationEmail
+     */
+    accountId: string
+}
+
 export interface UsersApiUpdateRequest {
     /**
      * 
@@ -163,6 +172,13 @@ export class ObjectUsersApi {
      */
     public getAvatarUrl(param: UsersApiGetAvatarUrlRequest, options?: Configuration): Promise<void> {
         return this.api.getAvatarUrl(param.accountId,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public resendVerificationEmail(param: UsersApiResendVerificationEmailRequest, options?: Configuration): Promise<void> {
+        return this.api.resendVerificationEmail(param.accountId,  options).toPromise();
     }
 
     /**

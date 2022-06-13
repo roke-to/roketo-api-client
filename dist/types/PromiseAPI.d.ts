@@ -30,6 +30,7 @@ export declare class PromiseUsersApi {
     constructor(configuration: Configuration, requestFactory?: UsersApiRequestFactory, responseProcessor?: UsersApiResponseProcessor);
     findOne(accountId: string, _options?: Configuration): Promise<User>;
     getAvatarUrl(accountId: string, _options?: Configuration): Promise<void>;
+    resendVerificationEmail(accountId: string, _options?: Configuration): Promise<void>;
     update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Promise<void>;
     verifyEmail(accountId: string, jwt: string, _options?: Configuration): Promise<void>;
 }

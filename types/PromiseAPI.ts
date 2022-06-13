@@ -128,6 +128,14 @@ export class PromiseUsersApi {
 
     /**
      * @param accountId 
+     */
+    public resendVerificationEmail(accountId: string, _options?: Configuration): Promise<void> {
+        const result = this.api.resendVerificationEmail(accountId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param accountId 
      * @param updateUserDto 
      */
     public update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Promise<void> {

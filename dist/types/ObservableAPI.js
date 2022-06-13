@@ -184,9 +184,9 @@ var ObservableUsersApi = (function () {
             return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.getAvatarUrl(rsp); }));
         }));
     };
-    ObservableUsersApi.prototype.update = function (accountId, updateUserDto, _options) {
+    ObservableUsersApi.prototype.resendVerificationEmail = function (accountId, _options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.update(accountId, updateUserDto, _options);
+        var requestContextPromise = this.requestFactory.resendVerificationEmail(accountId, _options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_13 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -205,12 +205,12 @@ var ObservableUsersApi = (function () {
                 var middleware = _a[_i];
                 _loop_14(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.update(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.resendVerificationEmail(rsp); }));
         }));
     };
-    ObservableUsersApi.prototype.verifyEmail = function (accountId, jwt, _options) {
+    ObservableUsersApi.prototype.update = function (accountId, updateUserDto, _options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.verifyEmail(accountId, jwt, _options);
+        var requestContextPromise = this.requestFactory.update(accountId, updateUserDto, _options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_15 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -228,6 +228,30 @@ var ObservableUsersApi = (function () {
             for (var _i = 0, _a = _this.configuration.middleware; _i < _a.length; _i++) {
                 var middleware = _a[_i];
                 _loop_16(middleware);
+            }
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.update(rsp); }));
+        }));
+    };
+    ObservableUsersApi.prototype.verifyEmail = function (accountId, jwt, _options) {
+        var _this = this;
+        var requestContextPromise = this.requestFactory.verifyEmail(accountId, jwt, _options);
+        var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
+        var _loop_17 = function (middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
+        };
+        for (var _i = 0, _a = this.configuration.middleware; _i < _a.length; _i++) {
+            var middleware = _a[_i];
+            _loop_17(middleware);
+        }
+        return middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return _this.configuration.httpApi.send(ctx); })).
+            pipe(rxjsStub_2.mergeMap(function (response) {
+            var middlewarePostObservable = rxjsStub_1.of(response);
+            var _loop_18 = function (middleware) {
+                middlewarePostObservable = middlewarePostObservable.pipe(rxjsStub_2.mergeMap(function (rsp) { return middleware.post(rsp); }));
+            };
+            for (var _i = 0, _a = _this.configuration.middleware; _i < _a.length; _i++) {
+                var middleware = _a[_i];
+                _loop_18(middleware);
             }
             return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.verifyEmail(rsp); }));
         }));

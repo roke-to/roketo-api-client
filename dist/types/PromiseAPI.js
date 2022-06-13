@@ -54,6 +54,10 @@ var PromiseUsersApi = (function () {
         var result = this.api.getAvatarUrl(accountId, _options);
         return result.toPromise();
     };
+    PromiseUsersApi.prototype.resendVerificationEmail = function (accountId, _options) {
+        var result = this.api.resendVerificationEmail(accountId, _options);
+        return result.toPromise();
+    };
     PromiseUsersApi.prototype.update = function (accountId, updateUserDto, _options) {
         var result = this.api.update(accountId, updateUserDto, _options);
         return result.toPromise();

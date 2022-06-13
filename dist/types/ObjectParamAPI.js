@@ -51,6 +51,9 @@ var ObjectUsersApi = (function () {
     ObjectUsersApi.prototype.getAvatarUrl = function (param, options) {
         return this.api.getAvatarUrl(param.accountId, options).toPromise();
     };
+    ObjectUsersApi.prototype.resendVerificationEmail = function (param, options) {
+        return this.api.resendVerificationEmail(param.accountId, options).toPromise();
+    };
     ObjectUsersApi.prototype.update = function (param, options) {
         return this.api.update(param.accountId, param.updateUserDto, options).toPromise();
     };

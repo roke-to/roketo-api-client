@@ -40,6 +40,9 @@ export interface UsersApiFindOneRequest {
 export interface UsersApiGetAvatarUrlRequest {
     accountId: string;
 }
+export interface UsersApiResendVerificationEmailRequest {
+    accountId: string;
+}
 export interface UsersApiUpdateRequest {
     accountId: string;
     updateUserDto: UpdateUserDto;
@@ -53,6 +56,7 @@ export declare class ObjectUsersApi {
     constructor(configuration: Configuration, requestFactory?: UsersApiRequestFactory, responseProcessor?: UsersApiResponseProcessor);
     findOne(param: UsersApiFindOneRequest, options?: Configuration): Promise<User>;
     getAvatarUrl(param: UsersApiGetAvatarUrlRequest, options?: Configuration): Promise<void>;
+    resendVerificationEmail(param: UsersApiResendVerificationEmailRequest, options?: Configuration): Promise<void>;
     update(param: UsersApiUpdateRequest, options?: Configuration): Promise<void>;
     verifyEmail(param: UsersApiVerifyEmailRequest, options?: Configuration): Promise<void>;
 }
