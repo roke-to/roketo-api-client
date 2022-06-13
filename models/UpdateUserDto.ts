@@ -21,6 +21,10 @@ export class UpdateUserDto {
     * The email of a user.
     */
     'email': string;
+    /**
+    * User's allowance for email notifications.
+    */
+    'allowNotifications': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -35,6 +39,12 @@ export class UpdateUserDto {
             "name": "email",
             "baseName": "email",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "allowNotifications",
+            "baseName": "allowNotifications",
+            "type": "boolean",
             "format": ""
         }    ];
 

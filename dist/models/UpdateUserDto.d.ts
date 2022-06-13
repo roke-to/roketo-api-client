@@ -1,6 +1,7 @@
 export declare class UpdateUserDto {
     'name': string;
     'email': string;
+    'allowNotifications': boolean;
     static readonly discriminator: string | undefined;
     static readonly attributeTypeMap: Array<{
         name: string;

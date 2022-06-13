@@ -20,6 +20,12 @@ var UpdateUserDto = (function () {
             "baseName": "email",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "allowNotifications",
+            "baseName": "allowNotifications",
+            "type": "boolean",
+            "format": ""
         }
     ];
     return UpdateUserDto;

@@ -138,6 +138,7 @@ let body:.UsersApiUpdateRequest = {
   updateUserDto: {
     name: "name_example",
     email: "email_example",
+    allowNotifications: true,
   },
 };
 
