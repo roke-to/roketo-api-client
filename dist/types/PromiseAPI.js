@@ -58,6 +58,10 @@ var PromiseUsersApi = (function () {
         var result = this.api.update(accountId, updateUserDto, _options);
         return result.toPromise();
     };
+    PromiseUsersApi.prototype.verifyEmail = function (accountId, jwt, _options) {
+        var result = this.api.verifyEmail(accountId, jwt, _options);
+        return result.toPromise();
+    };
     return PromiseUsersApi;
 }());
 exports.PromiseUsersApi = PromiseUsersApi;

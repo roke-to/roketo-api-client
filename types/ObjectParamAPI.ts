@@ -129,6 +129,21 @@ export interface UsersApiUpdateRequest {
     updateUserDto: UpdateUserDto
 }
 
+export interface UsersApiVerifyEmailRequest {
+    /**
+     * 
+     * @type string
+     * @memberof UsersApiverifyEmail
+     */
+    accountId: string
+    /**
+     * 
+     * @type string
+     * @memberof UsersApiverifyEmail
+     */
+    jwt: string
+}
+
 export class ObjectUsersApi {
     private api: ObservableUsersApi
 
@@ -155,6 +170,13 @@ export class ObjectUsersApi {
      */
     public update(param: UsersApiUpdateRequest, options?: Configuration): Promise<void> {
         return this.api.update(param.accountId, param.updateUserDto,  options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public verifyEmail(param: UsersApiVerifyEmailRequest, options?: Configuration): Promise<void> {
+        return this.api.verifyEmail(param.accountId, param.jwt,  options).toPromise();
     }
 
 }

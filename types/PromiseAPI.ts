@@ -135,6 +135,15 @@ export class PromiseUsersApi {
         return result.toPromise();
     }
 
+    /**
+     * @param accountId 
+     * @param jwt 
+     */
+    public verifyEmail(accountId: string, jwt: string, _options?: Configuration): Promise<void> {
+        const result = this.api.verifyEmail(accountId, jwt, _options);
+        return result.toPromise();
+    }
+
 
 }
 

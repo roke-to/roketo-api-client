@@ -26,6 +26,18 @@ var User = (function () {
             "baseName": "email",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "isEmailVerified",
+            "baseName": "isEmailVerified",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "verificationEmailSentAt",
+            "baseName": "verificationEmailSentAt",
+            "type": "Date",
+            "format": "date-time"
         }
     ];
     return User;

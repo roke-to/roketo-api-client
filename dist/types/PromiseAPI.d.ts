@@ -31,4 +31,5 @@ export declare class PromiseUsersApi {
     findOne(accountId: string, _options?: Configuration): Promise<User>;
     getAvatarUrl(accountId: string, _options?: Configuration): Promise<void>;
     update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Promise<void>;
+    verifyEmail(accountId: string, jwt: string, _options?: Configuration): Promise<void>;
 }

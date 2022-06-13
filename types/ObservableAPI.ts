@@ -234,4 +234,27 @@ export class ObservableUsersApi {
             }));
     }
 
+    /**
+     * @param accountId 
+     * @param jwt 
+     */
+    public verifyEmail(accountId: string, jwt: string, _options?: Configuration): Observable<void> {
+        const requestContextPromise = this.requestFactory.verifyEmail(accountId, jwt, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.verifyEmail(rsp)));
+            }));
+    }
+
 }

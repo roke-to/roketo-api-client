@@ -2,6 +2,8 @@ export declare class User {
     'accountId': string;
     'name': string;
     'email': string;
+    'isEmailVerified': boolean;
+    'verificationEmailSentAt': Date;
     static readonly discriminator: string | undefined;
     static readonly attributeTypeMap: Array<{
         name: string;

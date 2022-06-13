@@ -40,4 +40,5 @@ export declare class ObservableUsersApi {
     findOne(accountId: string, _options?: Configuration): Observable<User>;
     getAvatarUrl(accountId: string, _options?: Configuration): Observable<void>;
     update(accountId: string, updateUserDto: UpdateUserDto, _options?: Configuration): Observable<void>;
+    verifyEmail(accountId: string, jwt: string, _options?: Configuration): Observable<void>;
 }

@@ -44,10 +44,15 @@ export interface UsersApiUpdateRequest {
     accountId: string;
     updateUserDto: UpdateUserDto;
 }
+export interface UsersApiVerifyEmailRequest {
+    accountId: string;
+    jwt: string;
+}
 export declare class ObjectUsersApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: UsersApiRequestFactory, responseProcessor?: UsersApiResponseProcessor);
     findOne(param: UsersApiFindOneRequest, options?: Configuration): Promise<User>;
     getAvatarUrl(param: UsersApiGetAvatarUrlRequest, options?: Configuration): Promise<void>;
     update(param: UsersApiUpdateRequest, options?: Configuration): Promise<void>;
+    verifyEmail(param: UsersApiVerifyEmailRequest, options?: Configuration): Promise<void>;
 }

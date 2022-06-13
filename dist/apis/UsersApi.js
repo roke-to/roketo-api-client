@@ -161,6 +161,36 @@ var UsersApiRequestFactory = (function (_super) {
             });
         });
     };
+    UsersApiRequestFactory.prototype.verifyEmail = function (accountId, jwt, _options) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function () {
+            var _config, localVarPath, requestContext, defaultAuth;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
+                    case 0:
+                        _config = _options || this.configuration;
+                        if (accountId === null || accountId === undefined) {
+                            throw new baseapi_1.RequiredError("UsersApi", "verifyEmail", "accountId");
+                        }
+                        if (jwt === null || jwt === undefined) {
+                            throw new baseapi_1.RequiredError("UsersApi", "verifyEmail", "jwt");
+                        }
+                        localVarPath = '/users/{accountId}/verifyEmail/{jwt}'
+                            .replace('{' + 'accountId' + '}', encodeURIComponent(String(accountId)))
+                            .replace('{' + 'jwt' + '}', encodeURIComponent(String(jwt)));
+                        requestContext = _config.baseServer.makeRequestContext(localVarPath, http_1.HttpMethod.GET);
+                        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8");
+                        defaultAuth = ((_a = _options === null || _options === void 0 ? void 0 : _options.authMethods) === null || _a === void 0 ? void 0 : _a.default) || ((_c = (_b = this.configuration) === null || _b === void 0 ? void 0 : _b.authMethods) === null || _c === void 0 ? void 0 : _c.default);
+                        if (!(defaultAuth === null || defaultAuth === void 0 ? void 0 : defaultAuth.applySecurityAuthentication)) return [3, 2];
+                        return [4, (defaultAuth === null || defaultAuth === void 0 ? void 0 : defaultAuth.applySecurityAuthentication(requestContext))];
+                    case 1:
+                        _d.sent();
+                        _d.label = 2;
+                    case 2: return [2, requestContext];
+                }
+            });
+        });
+    };
     return UsersApiRequestFactory;
 }(baseapi_1.BaseAPIRequestFactory));
 exports.UsersApiRequestFactory = UsersApiRequestFactory;
@@ -262,6 +292,32 @@ var UsersApiResponseProcessor = (function () {
                         _k = [void 0, response.httpStatusCode, "Unknown API Status Code!"];
                         return [4, response.getBodyAsAny()];
                     case 5: throw new (_j.apply(exception_1.ApiException, _k.concat([_l.sent(), response.headers])))();
+                }
+            });
+        });
+    };
+    UsersApiResponseProcessor.prototype.verifyEmail = function (response) {
+        return __awaiter(this, void 0, void 0, function () {
+            var contentType, body, _a, _b, _c, _d, _e, _f;
+            return __generator(this, function (_g) {
+                switch (_g.label) {
+                    case 0:
+                        contentType = ObjectSerializer_1.ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+                        if (util_1.isCodeInRange("200", response.httpStatusCode)) {
+                            return [2];
+                        }
+                        if (!(response.httpStatusCode >= 200 && response.httpStatusCode <= 299)) return [3, 2];
+                        _b = (_a = ObjectSerializer_1.ObjectSerializer).deserialize;
+                        _d = (_c = ObjectSerializer_1.ObjectSerializer).parse;
+                        return [4, response.body.text()];
+                    case 1:
+                        body = _b.apply(_a, [_d.apply(_c, [_g.sent(), contentType]), "void", ""]);
+                        return [2, body];
+                    case 2:
+                        _e = exception_1.ApiException.bind;
+                        _f = [void 0, response.httpStatusCode, "Unknown API Status Code!"];
+                        return [4, response.getBodyAsAny()];
+                    case 3: throw new (_e.apply(exception_1.ApiException, _f.concat([_g.sent(), response.headers])))();
                 }
             });
         });

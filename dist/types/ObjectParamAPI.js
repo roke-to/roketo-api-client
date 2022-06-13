@@ -54,6 +54,9 @@ var ObjectUsersApi = (function () {
     ObjectUsersApi.prototype.update = function (param, options) {
         return this.api.update(param.accountId, param.updateUserDto, options).toPromise();
     };
+    ObjectUsersApi.prototype.verifyEmail = function (param, options) {
+        return this.api.verifyEmail(param.accountId, param.jwt, options).toPromise();
+    };
     return ObjectUsersApi;
 }());
 exports.ObjectUsersApi = ObjectUsersApi;
