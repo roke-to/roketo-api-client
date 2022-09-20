@@ -64,10 +64,25 @@ export class ObjectDefaultApi {
 import { ObservableNotificationsApi } from "./ObservableAPI";
 import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor} from "../apis/NotificationsApi";
 
-export interface NotificationsApiFindAllRequest {
+export interface NotificationsApiFindAllNotificationsRequest {
 }
 
 export interface NotificationsApiMarkAllReadRequest {
+}
+
+export interface NotificationsApiUnsubscribeRequest {
+    /**
+     * 
+     * @type string
+     * @memberof NotificationsApiunsubscribe
+     */
+    accountId: string
+    /**
+     * 
+     * @type string
+     * @memberof NotificationsApiunsubscribe
+     */
+    jwt: string
 }
 
 export class ObjectNotificationsApi {
@@ -80,8 +95,8 @@ export class ObjectNotificationsApi {
     /**
      * @param param the request object
      */
-    public findAll(param: NotificationsApiFindAllRequest = {}, options?: Configuration): Promise<Array<Notification>> {
-        return this.api.findAll( options).toPromise();
+    public findAllNotifications(param: NotificationsApiFindAllNotificationsRequest = {}, options?: Configuration): Promise<Array<Notification>> {
+        return this.api.findAllNotifications( options).toPromise();
     }
 
     /**
@@ -89,6 +104,35 @@ export class ObjectNotificationsApi {
      */
     public markAllRead(param: NotificationsApiMarkAllReadRequest = {}, options?: Configuration): Promise<void> {
         return this.api.markAllRead( options).toPromise();
+    }
+
+    /**
+     * @param param the request object
+     */
+    public unsubscribe(param: NotificationsApiUnsubscribeRequest, options?: Configuration): Promise<void> {
+        return this.api.unsubscribe(param.accountId, param.jwt,  options).toPromise();
+    }
+
+}
+
+import { ObservableTokensApi } from "./ObservableAPI";
+import { TokensApiRequestFactory, TokensApiResponseProcessor} from "../apis/TokensApi";
+
+export interface TokensApiFindAllTokensRequest {
+}
+
+export class ObjectTokensApi {
+    private api: ObservableTokensApi
+
+    public constructor(configuration: Configuration, requestFactory?: TokensApiRequestFactory, responseProcessor?: TokensApiResponseProcessor) {
+        this.api = new ObservableTokensApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public findAllTokens(param: TokensApiFindAllTokensRequest = {}, options?: Configuration): Promise<Array<string>> {
+        return this.api.findAllTokens( options).toPromise();
     }
 
 }

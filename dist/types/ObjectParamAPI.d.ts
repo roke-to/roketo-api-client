@@ -23,15 +23,28 @@ export declare class ObjectDefaultApi {
     getHello(param?: DefaultApiGetHelloRequest, options?: Configuration): Promise<HelloResponse>;
 }
 import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor } from "../apis/NotificationsApi";
-export interface NotificationsApiFindAllRequest {
+export interface NotificationsApiFindAllNotificationsRequest {
 }
 export interface NotificationsApiMarkAllReadRequest {
+}
+export interface NotificationsApiUnsubscribeRequest {
+    accountId: string;
+    jwt: string;
 }
 export declare class ObjectNotificationsApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
-    findAll(param?: NotificationsApiFindAllRequest, options?: Configuration): Promise<Array<Notification>>;
+    findAllNotifications(param?: NotificationsApiFindAllNotificationsRequest, options?: Configuration): Promise<Array<Notification>>;
     markAllRead(param?: NotificationsApiMarkAllReadRequest, options?: Configuration): Promise<void>;
+    unsubscribe(param: NotificationsApiUnsubscribeRequest, options?: Configuration): Promise<void>;
+}
+import { TokensApiRequestFactory, TokensApiResponseProcessor } from "../apis/TokensApi";
+export interface TokensApiFindAllTokensRequest {
+}
+export declare class ObjectTokensApi {
+    private api;
+    constructor(configuration: Configuration, requestFactory?: TokensApiRequestFactory, responseProcessor?: TokensApiResponseProcessor);
+    findAllTokens(param?: TokensApiFindAllTokensRequest, options?: Configuration): Promise<Array<string>>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export interface UsersApiFindOneRequest {

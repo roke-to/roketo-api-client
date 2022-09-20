@@ -21,8 +21,15 @@ import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor } fro
 export declare class PromiseNotificationsApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
-    findAll(_options?: Configuration): Promise<Array<Notification>>;
+    findAllNotifications(_options?: Configuration): Promise<Array<Notification>>;
     markAllRead(_options?: Configuration): Promise<void>;
+    unsubscribe(accountId: string, jwt: string, _options?: Configuration): Promise<void>;
+}
+import { TokensApiRequestFactory, TokensApiResponseProcessor } from "../apis/TokensApi";
+export declare class PromiseTokensApi {
+    private api;
+    constructor(configuration: Configuration, requestFactory?: TokensApiRequestFactory, responseProcessor?: TokensApiResponseProcessor);
+    findAllTokens(_options?: Configuration): Promise<Array<string>>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export declare class PromiseUsersApi {

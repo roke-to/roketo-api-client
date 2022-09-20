@@ -22,7 +22,7 @@ export class UpdateUserDto {
     */
     'email'?: string;
     /**
-    * User's allowance for email notifications.
+    * User's permission for email notifications.
     */
     'allowNotifications'?: boolean;
 

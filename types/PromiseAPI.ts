@@ -79,8 +79,8 @@ export class PromiseNotificationsApi {
 
     /**
      */
-    public findAll(_options?: Configuration): Promise<Array<Notification>> {
-        const result = this.api.findAll(_options);
+    public findAllNotifications(_options?: Configuration): Promise<Array<Notification>> {
+        const result = this.api.findAllNotifications(_options);
         return result.toPromise();
     }
 
@@ -88,6 +88,41 @@ export class PromiseNotificationsApi {
      */
     public markAllRead(_options?: Configuration): Promise<void> {
         const result = this.api.markAllRead(_options);
+        return result.toPromise();
+    }
+
+    /**
+     * @param accountId 
+     * @param jwt 
+     */
+    public unsubscribe(accountId: string, jwt: string, _options?: Configuration): Promise<void> {
+        const result = this.api.unsubscribe(accountId, jwt, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableTokensApi } from './ObservableAPI';
+
+import { TokensApiRequestFactory, TokensApiResponseProcessor} from "../apis/TokensApi";
+export class PromiseTokensApi {
+    private api: ObservableTokensApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: TokensApiRequestFactory,
+        responseProcessor?: TokensApiResponseProcessor
+    ) {
+        this.api = new ObservableTokensApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     */
+    public findAllTokens(_options?: Configuration): Promise<Array<string>> {
+        const result = this.api.findAllTokens(_options);
         return result.toPromise();
     }
 

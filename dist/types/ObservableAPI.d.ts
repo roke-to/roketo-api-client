@@ -28,8 +28,17 @@ export declare class ObservableNotificationsApi {
     private responseProcessor;
     private configuration;
     constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
-    findAll(_options?: Configuration): Observable<Array<Notification>>;
+    findAllNotifications(_options?: Configuration): Observable<Array<Notification>>;
     markAllRead(_options?: Configuration): Observable<void>;
+    unsubscribe(accountId: string, jwt: string, _options?: Configuration): Observable<void>;
+}
+import { TokensApiRequestFactory, TokensApiResponseProcessor } from "../apis/TokensApi";
+export declare class ObservableTokensApi {
+    private requestFactory;
+    private responseProcessor;
+    private configuration;
+    constructor(configuration: Configuration, requestFactory?: TokensApiRequestFactory, responseProcessor?: TokensApiResponseProcessor);
+    findAllTokens(_options?: Configuration): Observable<Array<string>>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export declare class ObservableUsersApi {

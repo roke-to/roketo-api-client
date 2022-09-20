@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PromiseUsersApi = exports.PromiseNotificationsApi = exports.PromiseDefaultApi = exports.PromiseAuthApi = void 0;
+exports.PromiseUsersApi = exports.PromiseTokensApi = exports.PromiseNotificationsApi = exports.PromiseDefaultApi = exports.PromiseAuthApi = void 0;
 var ObservableAPI_1 = require("./ObservableAPI");
 var PromiseAuthApi = (function () {
     function PromiseAuthApi(configuration, requestFactory, responseProcessor) {
@@ -30,21 +30,37 @@ var PromiseNotificationsApi = (function () {
     function PromiseNotificationsApi(configuration, requestFactory, responseProcessor) {
         this.api = new ObservableAPI_3.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
     }
-    PromiseNotificationsApi.prototype.findAll = function (_options) {
-        var result = this.api.findAll(_options);
+    PromiseNotificationsApi.prototype.findAllNotifications = function (_options) {
+        var result = this.api.findAllNotifications(_options);
         return result.toPromise();
     };
     PromiseNotificationsApi.prototype.markAllRead = function (_options) {
         var result = this.api.markAllRead(_options);
         return result.toPromise();
     };
+    PromiseNotificationsApi.prototype.unsubscribe = function (accountId, jwt, _options) {
+        var result = this.api.unsubscribe(accountId, jwt, _options);
+        return result.toPromise();
+    };
     return PromiseNotificationsApi;
 }());
 exports.PromiseNotificationsApi = PromiseNotificationsApi;
 var ObservableAPI_4 = require("./ObservableAPI");
+var PromiseTokensApi = (function () {
+    function PromiseTokensApi(configuration, requestFactory, responseProcessor) {
+        this.api = new ObservableAPI_4.ObservableTokensApi(configuration, requestFactory, responseProcessor);
+    }
+    PromiseTokensApi.prototype.findAllTokens = function (_options) {
+        var result = this.api.findAllTokens(_options);
+        return result.toPromise();
+    };
+    return PromiseTokensApi;
+}());
+exports.PromiseTokensApi = PromiseTokensApi;
+var ObservableAPI_5 = require("./ObservableAPI");
 var PromiseUsersApi = (function () {
     function PromiseUsersApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_4.ObservableUsersApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_5.ObservableUsersApi(configuration, requestFactory, responseProcessor);
     }
     PromiseUsersApi.prototype.findOne = function (accountId, _options) {
         var result = this.api.findOne(accountId, _options);

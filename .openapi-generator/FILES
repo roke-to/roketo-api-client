@@ -3,10 +3,12 @@ AuthApi.md
 DefaultApi.md
 NotificationsApi.md
 README.md
+TokensApi.md
 UsersApi.md
 apis/AuthApi.ts
 apis/DefaultApi.ts
 apis/NotificationsApi.ts
+apis/TokensApi.ts
 apis/UsersApi.ts
 apis/baseapi.ts
 apis/exception.ts
