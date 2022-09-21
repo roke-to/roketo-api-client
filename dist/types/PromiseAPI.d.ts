@@ -1,10 +1,17 @@
 import { Configuration } from '../configuration';
 import { AccessTokenDto } from '../models/AccessTokenDto';
+import { ArchivedStream } from '../models/ArchivedStream';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
 import { Notification } from '../models/Notification';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
+import { ArchivesStreamsApiRequestFactory, ArchivesStreamsApiResponseProcessor } from "../apis/ArchivesStreamsApi";
+export declare class PromiseArchivesStreamsApi {
+    private api;
+    constructor(configuration: Configuration, requestFactory?: ArchivesStreamsApiRequestFactory, responseProcessor?: ArchivesStreamsApiResponseProcessor);
+    findArchivedStreams(_options?: Configuration): Promise<Array<ArchivedStream>>;
+}
 import { AuthApiRequestFactory, AuthApiResponseProcessor } from "../apis/AuthApi";
 export declare class PromiseAuthApi {
     private api;
@@ -21,15 +28,9 @@ import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor } fro
 export declare class PromiseNotificationsApi {
     private api;
     constructor(configuration: Configuration, requestFactory?: NotificationsApiRequestFactory, responseProcessor?: NotificationsApiResponseProcessor);
-    findAllNotifications(_options?: Configuration): Promise<Array<Notification>>;
+    findAll(_options?: Configuration): Promise<Array<Notification>>;
     markAllRead(_options?: Configuration): Promise<void>;
     unsubscribe(accountId: string, jwt: string, _options?: Configuration): Promise<void>;
-}
-import { TokensApiRequestFactory, TokensApiResponseProcessor } from "../apis/TokensApi";
-export declare class PromiseTokensApi {
-    private api;
-    constructor(configuration: Configuration, requestFactory?: TokensApiRequestFactory, responseProcessor?: TokensApiResponseProcessor);
-    findAllTokens(_options?: Configuration): Promise<Array<string>>;
 }
 import { UsersApiRequestFactory, UsersApiResponseProcessor } from "../apis/UsersApi";
 export declare class PromiseUsersApi {

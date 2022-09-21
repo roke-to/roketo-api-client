@@ -12,6 +12,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ObjectSerializer = void 0;
 __exportStar(require("./AccessTokenDto"), exports);
+__exportStar(require("./ArchivedStream"), exports);
 __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);
@@ -20,6 +21,7 @@ __exportStar(require("./Unauthorized"), exports);
 __exportStar(require("./UpdateUserDto"), exports);
 __exportStar(require("./User"), exports);
 var AccessTokenDto_1 = require("./AccessTokenDto");
+var ArchivedStream_1 = require("./ArchivedStream");
 var BadRequest_1 = require("./BadRequest");
 var HelloResponse_1 = require("./HelloResponse");
 var LoginDto_1 = require("./LoginDto");
@@ -47,6 +49,7 @@ var enumsMap = new Set([
 ]);
 var typeMap = {
     "AccessTokenDto": AccessTokenDto_1.AccessTokenDto,
+    "ArchivedStream": ArchivedStream_1.ArchivedStream,
     "BadRequest": BadRequest_1.BadRequest,
     "HelloResponse": HelloResponse_1.HelloResponse,
     "LoginDto": LoginDto_1.LoginDto,

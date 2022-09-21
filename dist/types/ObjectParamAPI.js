@@ -1,10 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ObjectUsersApi = exports.ObjectTokensApi = exports.ObjectNotificationsApi = exports.ObjectDefaultApi = exports.ObjectAuthApi = void 0;
+exports.ObjectUsersApi = exports.ObjectNotificationsApi = exports.ObjectDefaultApi = exports.ObjectAuthApi = exports.ObjectArchivesStreamsApi = void 0;
 var ObservableAPI_1 = require("./ObservableAPI");
+var ObjectArchivesStreamsApi = (function () {
+    function ObjectArchivesStreamsApi(configuration, requestFactory, responseProcessor) {
+        this.api = new ObservableAPI_1.ObservableArchivesStreamsApi(configuration, requestFactory, responseProcessor);
+    }
+    ObjectArchivesStreamsApi.prototype.findArchivedStreams = function (param, options) {
+        if (param === void 0) { param = {}; }
+        return this.api.findArchivedStreams(options).toPromise();
+    };
+    return ObjectArchivesStreamsApi;
+}());
+exports.ObjectArchivesStreamsApi = ObjectArchivesStreamsApi;
+var ObservableAPI_2 = require("./ObservableAPI");
 var ObjectAuthApi = (function () {
     function ObjectAuthApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_1.ObservableAuthApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_2.ObservableAuthApi(configuration, requestFactory, responseProcessor);
     }
     ObjectAuthApi.prototype.login = function (param, options) {
         return this.api.login(param.loginDto, options).toPromise();
@@ -12,10 +24,10 @@ var ObjectAuthApi = (function () {
     return ObjectAuthApi;
 }());
 exports.ObjectAuthApi = ObjectAuthApi;
-var ObservableAPI_2 = require("./ObservableAPI");
+var ObservableAPI_3 = require("./ObservableAPI");
 var ObjectDefaultApi = (function () {
     function ObjectDefaultApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_2.ObservableDefaultApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_3.ObservableDefaultApi(configuration, requestFactory, responseProcessor);
     }
     ObjectDefaultApi.prototype.getHello = function (param, options) {
         if (param === void 0) { param = {}; }
@@ -24,14 +36,14 @@ var ObjectDefaultApi = (function () {
     return ObjectDefaultApi;
 }());
 exports.ObjectDefaultApi = ObjectDefaultApi;
-var ObservableAPI_3 = require("./ObservableAPI");
+var ObservableAPI_4 = require("./ObservableAPI");
 var ObjectNotificationsApi = (function () {
     function ObjectNotificationsApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_3.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_4.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
     }
-    ObjectNotificationsApi.prototype.findAllNotifications = function (param, options) {
+    ObjectNotificationsApi.prototype.findAll = function (param, options) {
         if (param === void 0) { param = {}; }
-        return this.api.findAllNotifications(options).toPromise();
+        return this.api.findAll(options).toPromise();
     };
     ObjectNotificationsApi.prototype.markAllRead = function (param, options) {
         if (param === void 0) { param = {}; }
@@ -43,18 +55,6 @@ var ObjectNotificationsApi = (function () {
     return ObjectNotificationsApi;
 }());
 exports.ObjectNotificationsApi = ObjectNotificationsApi;
-var ObservableAPI_4 = require("./ObservableAPI");
-var ObjectTokensApi = (function () {
-    function ObjectTokensApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_4.ObservableTokensApi(configuration, requestFactory, responseProcessor);
-    }
-    ObjectTokensApi.prototype.findAllTokens = function (param, options) {
-        if (param === void 0) { param = {}; }
-        return this.api.findAllTokens(options).toPromise();
-    };
-    return ObjectTokensApi;
-}());
-exports.ObjectTokensApi = ObjectTokensApi;
 var ObservableAPI_5 = require("./ObservableAPI");
 var ObjectUsersApi = (function () {
     function ObjectUsersApi(configuration, requestFactory, responseProcessor) {

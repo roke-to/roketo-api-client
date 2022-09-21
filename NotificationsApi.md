@@ -4,13 +4,13 @@ All URIs are relative to *https://roketo-test-api.herokuapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**findAllNotifications**](NotificationsApi.md#findAllNotifications) | **GET** /notifications | 
+[**findAll**](NotificationsApi.md#findAll) | **GET** /notifications | 
 [**markAllRead**](NotificationsApi.md#markAllRead) | **POST** /notifications/readAll | 
 [**unsubscribe**](NotificationsApi.md#unsubscribe) | **GET** /notifications/{accountId}/unsubscribe/{jwt} | 
 
 
-# **findAllNotifications**
-> Array<Notification> findAllNotifications()
+# **findAll**
+> Array<Notification> findAll()
 
 
 ### Example
@@ -25,7 +25,7 @@ const apiInstance = new .NotificationsApi(configuration);
 
 let body:any = {};
 
-apiInstance.findAllNotifications(body).then((data:any) => {
+apiInstance.findAll(body).then((data:any) => {
   console.log('API called successfully. Returned data: ' + data);
 }).catch((error:any) => console.error(error));
 ```

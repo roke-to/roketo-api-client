@@ -18,9 +18,9 @@ Object.defineProperty(exports, "createConfiguration", { enumerable: true, get: f
 __exportStar(require("./apis/exception"), exports);
 __exportStar(require("./servers"), exports);
 var PromiseAPI_1 = require("./types/PromiseAPI");
+Object.defineProperty(exports, "ArchivesStreamsApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseArchivesStreamsApi; } });
 Object.defineProperty(exports, "AuthApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseAuthApi; } });
 Object.defineProperty(exports, "DefaultApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseDefaultApi; } });
 Object.defineProperty(exports, "NotificationsApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseNotificationsApi; } });
-Object.defineProperty(exports, "TokensApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseTokensApi; } });
 Object.defineProperty(exports, "UsersApi", { enumerable: true, get: function () { return PromiseAPI_1.PromiseUsersApi; } });
 //# sourceMappingURL=index.js.map

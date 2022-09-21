@@ -4,6 +4,7 @@ import { Configuration} from '../configuration'
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { AccessTokenDto } from '../models/AccessTokenDto';
+import { ArchivedStream } from '../models/ArchivedStream';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
@@ -11,6 +12,45 @@ import { Notification } from '../models/Notification';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
+
+import { ArchivesStreamsApiRequestFactory, ArchivesStreamsApiResponseProcessor} from "../apis/ArchivesStreamsApi";
+export class ObservableArchivesStreamsApi {
+    private requestFactory: ArchivesStreamsApiRequestFactory;
+    private responseProcessor: ArchivesStreamsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ArchivesStreamsApiRequestFactory,
+        responseProcessor?: ArchivesStreamsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ArchivesStreamsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ArchivesStreamsApiResponseProcessor();
+    }
+
+    /**
+     */
+    public findArchivedStreams(_options?: Configuration): Observable<Array<ArchivedStream>> {
+        const requestContextPromise = this.requestFactory.findArchivedStreams(_options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findArchivedStreams(rsp)));
+            }));
+    }
+
+}
 
 import { AuthApiRequestFactory, AuthApiResponseProcessor} from "../apis/AuthApi";
 export class ObservableAuthApi {
@@ -109,8 +149,8 @@ export class ObservableNotificationsApi {
 
     /**
      */
-    public findAllNotifications(_options?: Configuration): Observable<Array<Notification>> {
-        const requestContextPromise = this.requestFactory.findAllNotifications(_options);
+    public findAll(_options?: Configuration): Observable<Array<Notification>> {
+        const requestContextPromise = this.requestFactory.findAll(_options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -124,7 +164,7 @@ export class ObservableNotificationsApi {
                 for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findAllNotifications(rsp)));
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findAll(rsp)));
             }));
     }
 
@@ -169,45 +209,6 @@ export class ObservableNotificationsApi {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.unsubscribe(rsp)));
-            }));
-    }
-
-}
-
-import { TokensApiRequestFactory, TokensApiResponseProcessor} from "../apis/TokensApi";
-export class ObservableTokensApi {
-    private requestFactory: TokensApiRequestFactory;
-    private responseProcessor: TokensApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: TokensApiRequestFactory,
-        responseProcessor?: TokensApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new TokensApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new TokensApiResponseProcessor();
-    }
-
-    /**
-     */
-    public findAllTokens(_options?: Configuration): Observable<Array<string>> {
-        const requestContextPromise = this.requestFactory.findAllTokens(_options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findAllTokens(rsp)));
             }));
     }
 

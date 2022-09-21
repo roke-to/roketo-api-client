@@ -60,7 +60,7 @@ var NotificationsApiRequestFactory = (function (_super) {
     function NotificationsApiRequestFactory() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    NotificationsApiRequestFactory.prototype.findAllNotifications = function (_options) {
+    NotificationsApiRequestFactory.prototype.findAll = function (_options) {
         var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function () {
             var _config, localVarPath, requestContext, authMethod, defaultAuth;
@@ -161,7 +161,7 @@ exports.NotificationsApiRequestFactory = NotificationsApiRequestFactory;
 var NotificationsApiResponseProcessor = (function () {
     function NotificationsApiResponseProcessor() {
     }
-    NotificationsApiResponseProcessor.prototype.findAllNotifications = function (response) {
+    NotificationsApiResponseProcessor.prototype.findAll = function (response) {
         return __awaiter(this, void 0, void 0, function () {
             var contentType, body, _a, _b, _c, _d, body, _e, _f, _g, _h, _j, _k;
             return __generator(this, function (_l) {

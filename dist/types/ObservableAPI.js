@@ -1,18 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ObservableUsersApi = exports.ObservableTokensApi = exports.ObservableNotificationsApi = exports.ObservableDefaultApi = exports.ObservableAuthApi = void 0;
+exports.ObservableUsersApi = exports.ObservableNotificationsApi = exports.ObservableDefaultApi = exports.ObservableAuthApi = exports.ObservableArchivesStreamsApi = void 0;
 var rxjsStub_1 = require("../rxjsStub");
 var rxjsStub_2 = require("../rxjsStub");
-var AuthApi_1 = require("../apis/AuthApi");
-var ObservableAuthApi = (function () {
-    function ObservableAuthApi(configuration, requestFactory, responseProcessor) {
+var ArchivesStreamsApi_1 = require("../apis/ArchivesStreamsApi");
+var ObservableArchivesStreamsApi = (function () {
+    function ObservableArchivesStreamsApi(configuration, requestFactory, responseProcessor) {
         this.configuration = configuration;
-        this.requestFactory = requestFactory || new AuthApi_1.AuthApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AuthApi_1.AuthApiResponseProcessor();
+        this.requestFactory = requestFactory || new ArchivesStreamsApi_1.ArchivesStreamsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ArchivesStreamsApi_1.ArchivesStreamsApiResponseProcessor();
     }
-    ObservableAuthApi.prototype.login = function (loginDto, _options) {
+    ObservableArchivesStreamsApi.prototype.findArchivedStreams = function (_options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.login(loginDto, _options);
+        var requestContextPromise = this.requestFactory.findArchivedStreams(_options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_1 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -31,22 +31,22 @@ var ObservableAuthApi = (function () {
                 var middleware = _a[_i];
                 _loop_2(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.login(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.findArchivedStreams(rsp); }));
         }));
     };
-    return ObservableAuthApi;
+    return ObservableArchivesStreamsApi;
 }());
-exports.ObservableAuthApi = ObservableAuthApi;
-var DefaultApi_1 = require("../apis/DefaultApi");
-var ObservableDefaultApi = (function () {
-    function ObservableDefaultApi(configuration, requestFactory, responseProcessor) {
+exports.ObservableArchivesStreamsApi = ObservableArchivesStreamsApi;
+var AuthApi_1 = require("../apis/AuthApi");
+var ObservableAuthApi = (function () {
+    function ObservableAuthApi(configuration, requestFactory, responseProcessor) {
         this.configuration = configuration;
-        this.requestFactory = requestFactory || new DefaultApi_1.DefaultApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new DefaultApi_1.DefaultApiResponseProcessor();
+        this.requestFactory = requestFactory || new AuthApi_1.AuthApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new AuthApi_1.AuthApiResponseProcessor();
     }
-    ObservableDefaultApi.prototype.getHello = function (_options) {
+    ObservableAuthApi.prototype.login = function (loginDto, _options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.getHello(_options);
+        var requestContextPromise = this.requestFactory.login(loginDto, _options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_3 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -65,22 +65,22 @@ var ObservableDefaultApi = (function () {
                 var middleware = _a[_i];
                 _loop_4(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.getHello(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.login(rsp); }));
         }));
     };
-    return ObservableDefaultApi;
+    return ObservableAuthApi;
 }());
-exports.ObservableDefaultApi = ObservableDefaultApi;
-var NotificationsApi_1 = require("../apis/NotificationsApi");
-var ObservableNotificationsApi = (function () {
-    function ObservableNotificationsApi(configuration, requestFactory, responseProcessor) {
+exports.ObservableAuthApi = ObservableAuthApi;
+var DefaultApi_1 = require("../apis/DefaultApi");
+var ObservableDefaultApi = (function () {
+    function ObservableDefaultApi(configuration, requestFactory, responseProcessor) {
         this.configuration = configuration;
-        this.requestFactory = requestFactory || new NotificationsApi_1.NotificationsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new NotificationsApi_1.NotificationsApiResponseProcessor();
+        this.requestFactory = requestFactory || new DefaultApi_1.DefaultApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new DefaultApi_1.DefaultApiResponseProcessor();
     }
-    ObservableNotificationsApi.prototype.findAllNotifications = function (_options) {
+    ObservableDefaultApi.prototype.getHello = function (_options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.findAllNotifications(_options);
+        var requestContextPromise = this.requestFactory.getHello(_options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_5 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -99,12 +99,22 @@ var ObservableNotificationsApi = (function () {
                 var middleware = _a[_i];
                 _loop_6(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.findAllNotifications(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.getHello(rsp); }));
         }));
     };
-    ObservableNotificationsApi.prototype.markAllRead = function (_options) {
+    return ObservableDefaultApi;
+}());
+exports.ObservableDefaultApi = ObservableDefaultApi;
+var NotificationsApi_1 = require("../apis/NotificationsApi");
+var ObservableNotificationsApi = (function () {
+    function ObservableNotificationsApi(configuration, requestFactory, responseProcessor) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new NotificationsApi_1.NotificationsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new NotificationsApi_1.NotificationsApiResponseProcessor();
+    }
+    ObservableNotificationsApi.prototype.findAll = function (_options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.markAllRead(_options);
+        var requestContextPromise = this.requestFactory.findAll(_options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_7 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -123,12 +133,12 @@ var ObservableNotificationsApi = (function () {
                 var middleware = _a[_i];
                 _loop_8(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.markAllRead(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.findAll(rsp); }));
         }));
     };
-    ObservableNotificationsApi.prototype.unsubscribe = function (accountId, jwt, _options) {
+    ObservableNotificationsApi.prototype.markAllRead = function (_options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.unsubscribe(accountId, jwt, _options);
+        var requestContextPromise = this.requestFactory.markAllRead(_options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_9 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -147,22 +157,12 @@ var ObservableNotificationsApi = (function () {
                 var middleware = _a[_i];
                 _loop_10(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.unsubscribe(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.markAllRead(rsp); }));
         }));
     };
-    return ObservableNotificationsApi;
-}());
-exports.ObservableNotificationsApi = ObservableNotificationsApi;
-var TokensApi_1 = require("../apis/TokensApi");
-var ObservableTokensApi = (function () {
-    function ObservableTokensApi(configuration, requestFactory, responseProcessor) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new TokensApi_1.TokensApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new TokensApi_1.TokensApiResponseProcessor();
-    }
-    ObservableTokensApi.prototype.findAllTokens = function (_options) {
+    ObservableNotificationsApi.prototype.unsubscribe = function (accountId, jwt, _options) {
         var _this = this;
-        var requestContextPromise = this.requestFactory.findAllTokens(_options);
+        var requestContextPromise = this.requestFactory.unsubscribe(accountId, jwt, _options);
         var middlewarePreObservable = rxjsStub_1.from(requestContextPromise);
         var _loop_11 = function (middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(rxjsStub_2.mergeMap(function (ctx) { return middleware.pre(ctx); }));
@@ -181,12 +181,12 @@ var ObservableTokensApi = (function () {
                 var middleware = _a[_i];
                 _loop_12(middleware);
             }
-            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.findAllTokens(rsp); }));
+            return middlewarePostObservable.pipe(rxjsStub_2.map(function (rsp) { return _this.responseProcessor.unsubscribe(rsp); }));
         }));
     };
-    return ObservableTokensApi;
+    return ObservableNotificationsApi;
 }());
-exports.ObservableTokensApi = ObservableTokensApi;
+exports.ObservableNotificationsApi = ObservableNotificationsApi;
 var UsersApi_1 = require("../apis/UsersApi");
 var ObservableUsersApi = (function () {
     function ObservableUsersApi(configuration, requestFactory, responseProcessor) {

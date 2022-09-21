@@ -1,4 +1,5 @@
 export * from './AccessTokenDto';
+export * from './ArchivedStream';
 export * from './BadRequest';
 export * from './HelloResponse';
 export * from './LoginDto';
@@ -8,6 +9,7 @@ export * from './UpdateUserDto';
 export * from './User';
 
 import { AccessTokenDto } from './AccessTokenDto';
+import { ArchivedStream } from './ArchivedStream';
 import { BadRequest } from './BadRequest';
 import { HelloResponse } from './HelloResponse';
 import { LoginDto } from './LoginDto';
@@ -41,6 +43,7 @@ let enumsMap: Set<string> = new Set<string>([
 
 let typeMap: {[index: string]: any} = {
     "AccessTokenDto": AccessTokenDto,
+    "ArchivedStream": ArchivedStream,
     "BadRequest": BadRequest,
     "HelloResponse": HelloResponse,
     "LoginDto": LoginDto,

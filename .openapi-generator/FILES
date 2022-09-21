@@ -1,14 +1,14 @@
 .gitignore
+ArchivesStreamsApi.md
 AuthApi.md
 DefaultApi.md
 NotificationsApi.md
 README.md
-TokensApi.md
 UsersApi.md
+apis/ArchivesStreamsApi.ts
 apis/AuthApi.ts
 apis/DefaultApi.ts
 apis/NotificationsApi.ts
-apis/TokensApi.ts
 apis/UsersApi.ts
 apis/baseapi.ts
 apis/exception.ts
@@ -20,6 +20,7 @@ http/isomorphic-fetch.ts
 index.ts
 middleware.ts
 models/AccessTokenDto.ts
+models/ArchivedStream.ts
 models/BadRequest.ts
 models/HelloResponse.ts
 models/LoginDto.ts

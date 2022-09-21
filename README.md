@@ -1,4 +1,4 @@
-## @roketo/api-client@0.0.36
+## @roketo/api-client@
 
 This generator creates TypeScript/JavaScript client that utilizes fetch-api.
 
@@ -21,7 +21,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @roketo/api-client@0.0.36 --save
+npm install @roketo/api-client@ --save
 ```
 
 _unPublished (not recommended):_

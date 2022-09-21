@@ -17,7 +17,7 @@ export class NotificationsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      */
-    public async findAllNotifications(_options?: Configuration): Promise<RequestContext> {
+    public async findAll(_options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // Path Params
@@ -123,10 +123,10 @@ export class NotificationsApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to findAllNotifications
+     * @params response Response returned by the server for a request to findAll
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async findAllNotifications(response: ResponseContext): Promise<Array<Notification> > {
+     public async findAll(response: ResponseContext): Promise<Array<Notification> > {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: Array<Notification> = ObjectSerializer.deserialize(

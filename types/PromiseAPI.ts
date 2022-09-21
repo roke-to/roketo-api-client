@@ -3,6 +3,7 @@ import * as models from '../models/all';
 import { Configuration} from '../configuration'
 
 import { AccessTokenDto } from '../models/AccessTokenDto';
+import { ArchivedStream } from '../models/ArchivedStream';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
@@ -10,6 +11,32 @@ import { Notification } from '../models/Notification';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
+import { ObservableArchivesStreamsApi } from './ObservableAPI';
+
+import { ArchivesStreamsApiRequestFactory, ArchivesStreamsApiResponseProcessor} from "../apis/ArchivesStreamsApi";
+export class PromiseArchivesStreamsApi {
+    private api: ObservableArchivesStreamsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ArchivesStreamsApiRequestFactory,
+        responseProcessor?: ArchivesStreamsApiResponseProcessor
+    ) {
+        this.api = new ObservableArchivesStreamsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     */
+    public findArchivedStreams(_options?: Configuration): Promise<Array<ArchivedStream>> {
+        const result = this.api.findArchivedStreams(_options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableAuthApi } from './ObservableAPI';
 
 import { AuthApiRequestFactory, AuthApiResponseProcessor} from "../apis/AuthApi";
@@ -79,8 +106,8 @@ export class PromiseNotificationsApi {
 
     /**
      */
-    public findAllNotifications(_options?: Configuration): Promise<Array<Notification>> {
-        const result = this.api.findAllNotifications(_options);
+    public findAll(_options?: Configuration): Promise<Array<Notification>> {
+        const result = this.api.findAll(_options);
         return result.toPromise();
     }
 
@@ -97,32 +124,6 @@ export class PromiseNotificationsApi {
      */
     public unsubscribe(accountId: string, jwt: string, _options?: Configuration): Promise<void> {
         const result = this.api.unsubscribe(accountId, jwt, _options);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableTokensApi } from './ObservableAPI';
-
-import { TokensApiRequestFactory, TokensApiResponseProcessor} from "../apis/TokensApi";
-export class PromiseTokensApi {
-    private api: ObservableTokensApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: TokensApiRequestFactory,
-        responseProcessor?: TokensApiResponseProcessor
-    ) {
-        this.api = new ObservableTokensApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     */
-    public findAllTokens(_options?: Configuration): Promise<Array<string>> {
-        const result = this.api.findAllTokens(_options);
         return result.toPromise();
     }
 

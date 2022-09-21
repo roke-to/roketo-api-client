@@ -11,6 +11,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./AccessTokenDto"), exports);
+__exportStar(require("./ArchivedStream"), exports);
 __exportStar(require("./BadRequest"), exports);
 __exportStar(require("./HelloResponse"), exports);
 __exportStar(require("./LoginDto"), exports);

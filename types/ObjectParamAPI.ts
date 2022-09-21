@@ -3,6 +3,7 @@ import * as models from '../models/all';
 import { Configuration} from '../configuration'
 
 import { AccessTokenDto } from '../models/AccessTokenDto';
+import { ArchivedStream } from '../models/ArchivedStream';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';
@@ -10,6 +11,28 @@ import { Notification } from '../models/Notification';
 import { Unauthorized } from '../models/Unauthorized';
 import { UpdateUserDto } from '../models/UpdateUserDto';
 import { User } from '../models/User';
+
+import { ObservableArchivesStreamsApi } from "./ObservableAPI";
+import { ArchivesStreamsApiRequestFactory, ArchivesStreamsApiResponseProcessor} from "../apis/ArchivesStreamsApi";
+
+export interface ArchivesStreamsApiFindArchivedStreamsRequest {
+}
+
+export class ObjectArchivesStreamsApi {
+    private api: ObservableArchivesStreamsApi
+
+    public constructor(configuration: Configuration, requestFactory?: ArchivesStreamsApiRequestFactory, responseProcessor?: ArchivesStreamsApiResponseProcessor) {
+        this.api = new ObservableArchivesStreamsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * @param param the request object
+     */
+    public findArchivedStreams(param: ArchivesStreamsApiFindArchivedStreamsRequest = {}, options?: Configuration): Promise<Array<ArchivedStream>> {
+        return this.api.findArchivedStreams( options).toPromise();
+    }
+
+}
 
 import { ObservableAuthApi } from "./ObservableAPI";
 import { AuthApiRequestFactory, AuthApiResponseProcessor} from "../apis/AuthApi";
@@ -64,7 +87,7 @@ export class ObjectDefaultApi {
 import { ObservableNotificationsApi } from "./ObservableAPI";
 import { NotificationsApiRequestFactory, NotificationsApiResponseProcessor} from "../apis/NotificationsApi";
 
-export interface NotificationsApiFindAllNotificationsRequest {
+export interface NotificationsApiFindAllRequest {
 }
 
 export interface NotificationsApiMarkAllReadRequest {
@@ -95,8 +118,8 @@ export class ObjectNotificationsApi {
     /**
      * @param param the request object
      */
-    public findAllNotifications(param: NotificationsApiFindAllNotificationsRequest = {}, options?: Configuration): Promise<Array<Notification>> {
-        return this.api.findAllNotifications( options).toPromise();
+    public findAll(param: NotificationsApiFindAllRequest = {}, options?: Configuration): Promise<Array<Notification>> {
+        return this.api.findAll( options).toPromise();
     }
 
     /**
@@ -111,28 +134,6 @@ export class ObjectNotificationsApi {
      */
     public unsubscribe(param: NotificationsApiUnsubscribeRequest, options?: Configuration): Promise<void> {
         return this.api.unsubscribe(param.accountId, param.jwt,  options).toPromise();
-    }
-
-}
-
-import { ObservableTokensApi } from "./ObservableAPI";
-import { TokensApiRequestFactory, TokensApiResponseProcessor} from "../apis/TokensApi";
-
-export interface TokensApiFindAllTokensRequest {
-}
-
-export class ObjectTokensApi {
-    private api: ObservableTokensApi
-
-    public constructor(configuration: Configuration, requestFactory?: TokensApiRequestFactory, responseProcessor?: TokensApiResponseProcessor) {
-        this.api = new ObservableTokensApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * @param param the request object
-     */
-    public findAllTokens(param: TokensApiFindAllTokensRequest = {}, options?: Configuration): Promise<Array<string>> {
-        return this.api.findAllTokens( options).toPromise();
     }
 
 }

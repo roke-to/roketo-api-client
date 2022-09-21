@@ -1,10 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PromiseUsersApi = exports.PromiseTokensApi = exports.PromiseNotificationsApi = exports.PromiseDefaultApi = exports.PromiseAuthApi = void 0;
+exports.PromiseUsersApi = exports.PromiseNotificationsApi = exports.PromiseDefaultApi = exports.PromiseAuthApi = exports.PromiseArchivesStreamsApi = void 0;
 var ObservableAPI_1 = require("./ObservableAPI");
+var PromiseArchivesStreamsApi = (function () {
+    function PromiseArchivesStreamsApi(configuration, requestFactory, responseProcessor) {
+        this.api = new ObservableAPI_1.ObservableArchivesStreamsApi(configuration, requestFactory, responseProcessor);
+    }
+    PromiseArchivesStreamsApi.prototype.findArchivedStreams = function (_options) {
+        var result = this.api.findArchivedStreams(_options);
+        return result.toPromise();
+    };
+    return PromiseArchivesStreamsApi;
+}());
+exports.PromiseArchivesStreamsApi = PromiseArchivesStreamsApi;
+var ObservableAPI_2 = require("./ObservableAPI");
 var PromiseAuthApi = (function () {
     function PromiseAuthApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_1.ObservableAuthApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_2.ObservableAuthApi(configuration, requestFactory, responseProcessor);
     }
     PromiseAuthApi.prototype.login = function (loginDto, _options) {
         var result = this.api.login(loginDto, _options);
@@ -13,10 +25,10 @@ var PromiseAuthApi = (function () {
     return PromiseAuthApi;
 }());
 exports.PromiseAuthApi = PromiseAuthApi;
-var ObservableAPI_2 = require("./ObservableAPI");
+var ObservableAPI_3 = require("./ObservableAPI");
 var PromiseDefaultApi = (function () {
     function PromiseDefaultApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_2.ObservableDefaultApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_3.ObservableDefaultApi(configuration, requestFactory, responseProcessor);
     }
     PromiseDefaultApi.prototype.getHello = function (_options) {
         var result = this.api.getHello(_options);
@@ -25,13 +37,13 @@ var PromiseDefaultApi = (function () {
     return PromiseDefaultApi;
 }());
 exports.PromiseDefaultApi = PromiseDefaultApi;
-var ObservableAPI_3 = require("./ObservableAPI");
+var ObservableAPI_4 = require("./ObservableAPI");
 var PromiseNotificationsApi = (function () {
     function PromiseNotificationsApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_3.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
+        this.api = new ObservableAPI_4.ObservableNotificationsApi(configuration, requestFactory, responseProcessor);
     }
-    PromiseNotificationsApi.prototype.findAllNotifications = function (_options) {
-        var result = this.api.findAllNotifications(_options);
+    PromiseNotificationsApi.prototype.findAll = function (_options) {
+        var result = this.api.findAll(_options);
         return result.toPromise();
     };
     PromiseNotificationsApi.prototype.markAllRead = function (_options) {
@@ -45,18 +57,6 @@ var PromiseNotificationsApi = (function () {
     return PromiseNotificationsApi;
 }());
 exports.PromiseNotificationsApi = PromiseNotificationsApi;
-var ObservableAPI_4 = require("./ObservableAPI");
-var PromiseTokensApi = (function () {
-    function PromiseTokensApi(configuration, requestFactory, responseProcessor) {
-        this.api = new ObservableAPI_4.ObservableTokensApi(configuration, requestFactory, responseProcessor);
-    }
-    PromiseTokensApi.prototype.findAllTokens = function (_options) {
-        var result = this.api.findAllTokens(_options);
-        return result.toPromise();
-    };
-    return PromiseTokensApi;
-}());
-exports.PromiseTokensApi = PromiseTokensApi;
 var ObservableAPI_5 = require("./ObservableAPI");
 var PromiseUsersApi = (function () {
     function PromiseUsersApi(configuration, requestFactory, responseProcessor) {
