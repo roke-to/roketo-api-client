@@ -1,6 +1,6 @@
 {
   "name": "@roketo/api-client",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "OpenAPI client for @roketo/api-client",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
@@ -17,9 +17,9 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "whatwg-fetch": "^3.0.0",
     "es6-promise": "^4.2.4",
-    "url-parse": "^1.4.3"
+    "url-parse": "^1.4.3",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "typescript": "^3.9.3"
