@@ -10,18 +10,26 @@
  * Do not edit the class manually.
  */
 
+import { ArchivedStreamPayload } from './ArchivedStreamPayload';
 import { HttpFile } from '../http/http';
 
 export class ArchivedStream {
+    'id': string;
     'streamId': string;
     'accountId': string;
     'startedAt': Date;
     'finishedAt': Date;
-    'payload': any;
+    'payload': ArchivedStreamPayload;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "streamId",
             "baseName": "streamId",
@@ -49,7 +57,7 @@ export class ArchivedStream {
         {
             "name": "payload",
             "baseName": "payload",
-            "type": "any",
+            "type": "ArchivedStreamPayload",
             "format": ""
         }    ];
 

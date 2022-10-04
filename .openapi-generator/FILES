@@ -21,6 +21,7 @@ index.ts
 middleware.ts
 models/AccessTokenDto.ts
 models/ArchivedStream.ts
+models/ArchivedStreamPayload.ts
 models/BadRequest.ts
 models/HelloResponse.ts
 models/LoginDto.ts

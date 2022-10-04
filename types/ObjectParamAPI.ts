@@ -4,6 +4,7 @@ import { Configuration} from '../configuration'
 
 import { AccessTokenDto } from '../models/AccessTokenDto';
 import { ArchivedStream } from '../models/ArchivedStream';
+import { ArchivedStreamPayload } from '../models/ArchivedStreamPayload';
 import { BadRequest } from '../models/BadRequest';
 import { HelloResponse } from '../models/HelloResponse';
 import { LoginDto } from '../models/LoginDto';

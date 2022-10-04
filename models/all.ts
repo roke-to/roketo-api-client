@@ -1,5 +1,6 @@
 export * from './AccessTokenDto'
 export * from './ArchivedStream'
+export * from './ArchivedStreamPayload'
 export * from './BadRequest'
 export * from './HelloResponse'
 export * from './LoginDto'

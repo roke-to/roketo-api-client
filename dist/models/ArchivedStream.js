@@ -10,6 +10,12 @@ var ArchivedStream = (function () {
     ArchivedStream.discriminator = undefined;
     ArchivedStream.attributeTypeMap = [
         {
+            "name": "id",
+            "baseName": "id",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "streamId",
             "baseName": "streamId",
             "type": "string",
@@ -36,7 +42,7 @@ var ArchivedStream = (function () {
         {
             "name": "payload",
             "baseName": "payload",
-            "type": "any",
+            "type": "ArchivedStreamPayload",
             "format": ""
         }
     ];
